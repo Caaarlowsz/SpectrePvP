@@ -22,10 +22,10 @@ import br.alkazuz.kitpvp.conquista.conquistas.RicoII;
 import br.alkazuz.kitpvp.conquista.conquistas.RicoIII;
 
 public class ConquistaManager {
-	
+
 	public static ArrayList<Conquista> conquistas = new ArrayList<Conquista>();
-	
-	public ConquistaManager(){
+
+	public ConquistaManager() {
 		conquistas.add(new CaixasI());
 		conquistas.add(new CaixasII());
 		conquistas.add(new CaixasIII());
@@ -45,10 +45,10 @@ public class ConquistaManager {
 		conquistas.add(new RicoII());
 		conquistas.add(new RicoIII());
 	}
-	
-	public Conquista getConquistaByName(String name){
-		for(Conquista cqt : conquistas){
-			if(cqt.getName().equalsIgnoreCase(name)){
+
+	public Conquista getConquistaByName(String name) {
+		for (Conquista cqt : conquistas) {
+			if (cqt.getName().equalsIgnoreCase(name)) {
 				return cqt;
 			}
 		}

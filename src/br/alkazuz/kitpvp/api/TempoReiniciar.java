@@ -6,14 +6,13 @@ import org.bukkit.entity.Player;
 import br.alkazuz.kitpvp.main.Main;
 
 public class TempoReiniciar {
-	
+
 	public static Integer Tempo;
 	public static int Iniciando = 301;
-	
+
 	public TempoReiniciar() {
 		Tempo = Integer.valueOf(Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.plugin, new Runnable() {
-				
-			@SuppressWarnings("deprecation")
+
 			public void run() {
 				Iniciando -= 1;
 				if (Iniciando == 300) {
@@ -53,35 +52,36 @@ public class TempoReiniciar {
 					mandarAvisos();
 				}
 				if (Iniciando == 0) {
-					for(Player player : Bukkit.getOnlinePlayers())
-					{
+					for (Player player : Bukkit.getOnlinePlayers()) {
 						player.kickPlayer("§cServidor Reiniciando...");
 					}
-						CancelarTempo();
-						Iniciando = 301;
-						Bukkit.getServer().shutdown();
-					}
+					CancelarTempo();
+					Iniciando = 301;
+					Bukkit.getServer().shutdown();
 				}
+			}
 
-			
 		}, 0L, 20L));
 	}
+
 	private void mandarAvisos() {
-		Bukkit.broadcastMessage("§d[Server] Servidor Reiniciando em "+FormatoTempo(Iniciando));
-		
+		Bukkit.broadcastMessage("§d[Server] Servidor Reiniciando em " + FormatoTempo(Iniciando));
+
 	}
+
 	public static void CancelarTempo() {
 		if (Tempo != null) {
 			Bukkit.getScheduler().cancelTask(Tempo);
 			Tempo = null;
 		}
 	}
+
 	public static String FormatoTempo(int Tempo) {
-		int Minuto = Tempo/60, Segundo = Tempo%60;
-		
+		int Minuto = Tempo / 60, Segundo = Tempo % 60;
+
 		String MinutoTexto = null;
 		String SegundoTexto = null;
-		
+
 		if (Minuto > 10) {
 			MinutoTexto = " " + Minuto + " minuto(s)";
 		} else {
@@ -98,7 +98,7 @@ public class TempoReiniciar {
 		if (Segundo == 0) {
 			SegundoTexto = "";
 		}
-		
+
 		return MinutoTexto + SegundoTexto;
 	}
 

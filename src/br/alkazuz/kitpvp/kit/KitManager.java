@@ -39,9 +39,9 @@ import br.alkazuz.kitpvp.kit.kits.Viper;
 import br.alkazuz.kitpvp.main.Main;
 
 public class KitManager {
-	
+
 	public static ArrayList<Kit> kits = new ArrayList<Kit>();
-	
+
 	public KitManager() {
 		PluginManager pm = Bukkit.getServer().getPluginManager();
 		kits.add(new PvP());
@@ -105,13 +105,12 @@ public class KitManager {
 		pm.registerEvents(new Batman(), Main.getPlugin());
 		kits.add(new Lucky());
 		pm.registerEvents(new Lucky(), Main.getPlugin());
-		
-		
+
 	}
-	
+
 	public static Kit getKit(String nome) {
-		for(Kit kit :  kits) {
-			if(kit.getName().equalsIgnoreCase(nome)) {
+		for (Kit kit : kits) {
+			if (kit.getName().equalsIgnoreCase(nome)) {
 				return kit;
 			}
 		}

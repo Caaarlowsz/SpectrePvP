@@ -3,7 +3,7 @@ package br.alkazuz.kitpvp.kit;
 import org.bukkit.inventory.ItemStack;
 
 public class Kit {
-	
+
 	public String name;
 	public int price;
 	public boolean free;
@@ -12,10 +12,11 @@ public class Kit {
 	public String perm;
 	public String[] desc;
 	public boolean diario;
-	
-	public Kit(String nome, int preco,boolean gratis,ItemStack itm,boolean send,String permissao,boolean dia,String[] desc) {
+
+	public Kit(String nome, int preco, boolean gratis, ItemStack itm, boolean send, String permissao, boolean dia,
+			String[] desc) {
 		name = nome;
-	    price = preco;
+		price = preco;
 		item = itm;
 		sendItem = send;
 		perm = permissao;
@@ -27,7 +28,7 @@ public class Kit {
 	public String[] getDesc() {
 		return desc;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -71,7 +72,7 @@ public class Kit {
 	public void setDect(String[] a) {
 		desc = a;
 	}
-	
+
 	public String getPerm() {
 		return perm;
 	}
@@ -80,6 +81,4 @@ public class Kit {
 		this.perm = perm;
 	}
 
-	
-	
 }

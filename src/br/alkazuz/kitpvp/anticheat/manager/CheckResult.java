@@ -4,7 +4,7 @@ public class CheckResult {
 
 	private Level level;
 	private String message;
-	
+
 	public CheckResult(Level lv, String msg) {
 		level = lv;
 		message = msg;
@@ -25,7 +25,5 @@ public class CheckResult {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
-	
-	
+
 }

@@ -27,7 +27,8 @@ public class Jump {
 		this.apex = apex;
 		this.end = end;
 
-		if ((start.location.getY() == apex.location.getY()) && (apex.location.getY() == end.location.getY()) && (!start.isAir) && (!apex.isAir) && (!end.isAir)) {
+		if ((start.location.getY() == apex.location.getY()) && (apex.location.getY() == end.location.getY())
+				&& (!start.isAir) && (!apex.isAir) && (!end.isAir)) {
 			this.isOnGround = true;
 		}
 		this.height = (apex.location.getY() - start.location.getY());
@@ -42,18 +43,20 @@ public class Jump {
 		this.verticalSpeed = ((this.height + this.fallDistance) / this.time);
 
 		this.horizontalSpeed = (this.length / this.time);
- 	}
+	}
+
 	public static double getNextExpectedY() {
 		return nextexpectedY;
 	}
- 	public static void setNextExpectedY(double d) {
- 		nextexpectedY = d;
- 	}
 
- 	private double GetHorzDistance(Location a, Location b) {
- 		double x = Math.abs(a.getX() - b.getX());
- 		double z = Math.abs(a.getZ() - b.getZ());
+	public static void setNextExpectedY(double d) {
+		nextexpectedY = d;
+	}
 
- 		return Math.sqrt(x * x + z * z);
- 	}
+	private double GetHorzDistance(Location a, Location b) {
+		double x = Math.abs(a.getX() - b.getX());
+		double z = Math.abs(a.getZ() - b.getZ());
+
+		return Math.sqrt(x * x + z * z);
+	}
 }

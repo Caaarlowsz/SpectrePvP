@@ -10,17 +10,18 @@ import br.alkazuz.kitpvp.mlg.MLGAPI;
 import br.alkazuz.kitpvp.mysql.manager.Status;
 import br.alkazuz.kitpvp.score.ScoreBoarding;
 
-public class MLGI extends Conquista{
+public class MLGI extends Conquista {
 
 	public MLGI() {
-		super("Mestre do MLG I", new String[] {"","§fAcerte §e20 §fMLG"}, 300);
+		super("Mestre do MLG I", new String[] { "", "§fAcerte §e20 §fMLG" }, 300);
 	}
-	
+
 	@Override
 	public boolean onComplete(Player p) {
-		if(MLGAPI.getAcertos(p) >= 20) {
+		if (MLGAPI.getAcertos(p) >= 20) {
 			ConquistaAPI.addConquista(p, this.getName());
-			p.sendMessage(MessageAPI.Command_Succes+"Você completou essa conquista e ganhou §e"+MenusAPI.money(getPremio()));
+			p.sendMessage(MessageAPI.Command_Succes + "Você completou essa conquista e ganhou §e"
+					+ MenusAPI.money(getPremio()));
 			Status.addCoins(p, this.getPremio());
 			ScoreBoarding.setScoreBoard(p);
 			return true;

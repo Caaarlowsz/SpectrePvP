@@ -6,15 +6,15 @@ import br.alkazuz.kitpvp.main.Main;
 import br.alkazuz.kitpvp.protection.Protection;
 
 public class RDMContador {
-	
+
 	public static Integer Tempo;
 	public static int Iniciando = 301;
-	
+
 	public RDMContador() {
 		Tempo = Integer.valueOf(Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.plugin, new Runnable() {
 			public void run() {
 				Iniciando -= 1;
-				if(RDMApi.status == RDMStatus.RODANDO) {
+				if (RDMApi.status == RDMStatus.RODANDO) {
 					CancelarTempo();
 					return;
 				}
@@ -55,17 +55,20 @@ public class RDMContador {
 					mandarAvisos();
 				}
 				if (Iniciando == 0) {
-					if(RDMApi.playing.size()< 10) {
-						Bukkit.broadcastMessage("§4§lRDM §fO Evento não pode ser iniciado porque não há Jogadores Suficientes");
+					if (RDMApi.playing.size() < 10) {
+						Bukkit.broadcastMessage(
+								"§4§lRDM §fO Evento não pode ser iniciado porque não há Jogadores Suficientes");
 						RDMContador.Tempo = 121;
-					}else {
+					} else {
 						CancelarTempo();
 						Iniciando = 301;
 						RDMApi.iniciar();
 						Bukkit.broadcastMessage(" ");
 						Bukkit.broadcastMessage("§4§lRDM §fEvento RDM foi iniciado");
-						Bukkit.broadcastMessage("§4§lRDM §fHá §c"+RDMApi.playing.size()+" §fjogadores Participando");
-						Bukkit.broadcastMessage("§4§lRDM §c"+RDMApi.getPlayerOne().getName()+" §fvs §c"+RDMApi.getPlayerTwo().getName());
+						Bukkit.broadcastMessage(
+								"§4§lRDM §fHá §c" + RDMApi.playing.size() + " §fjogadores Participando");
+						Bukkit.broadcastMessage("§4§lRDM §c" + RDMApi.getPlayerOne().getName() + " §fvs §c"
+								+ RDMApi.getPlayerTwo().getName());
 						Bukkit.broadcastMessage(" ");
 						Protection.setImortal(RDMApi.getPlayerTwo(), false);
 						Protection.setImortal(RDMApi.getPlayerOne(), false);
@@ -74,26 +77,29 @@ public class RDMContador {
 			}
 		}, 0L, 20L));
 	}
+
 	private void mandarAvisos() {
 		Bukkit.broadcastMessage(" ");
-		Bukkit.broadcastMessage("§4§lRDM §fEvento RDM iniciando em §e"+FormatoTempo(Iniciando));
-		Bukkit.broadcastMessage("§4§lRDM §fHá §c"+RDMApi.playing.size()+" §fjogadores Participando");
+		Bukkit.broadcastMessage("§4§lRDM §fEvento RDM iniciando em §e" + FormatoTempo(Iniciando));
+		Bukkit.broadcastMessage("§4§lRDM §fHá §c" + RDMApi.playing.size() + " §fjogadores Participando");
 		Bukkit.broadcastMessage("§4§lRDM §fUse §4/entrar §fpara participar");
 		Bukkit.broadcastMessage(" ");
-		
+
 	}
+
 	public static void CancelarTempo() {
 		if (Tempo != null) {
 			Bukkit.getScheduler().cancelTask(Tempo);
 			Tempo = null;
 		}
 	}
+
 	public static String FormatoTempo(int Tempo) {
-		int Minuto = Tempo/60, Segundo = Tempo%60;
-		
+		int Minuto = Tempo / 60, Segundo = Tempo % 60;
+
 		String MinutoTexto = null;
 		String SegundoTexto = null;
-		
+
 		if (Minuto > 10) {
 			MinutoTexto = " " + Minuto + " minuto(s)";
 		} else {
@@ -110,7 +116,7 @@ public class RDMContador {
 		if (Segundo == 0) {
 			SegundoTexto = "";
 		}
-		
+
 		return MinutoTexto + SegundoTexto;
 	}
 

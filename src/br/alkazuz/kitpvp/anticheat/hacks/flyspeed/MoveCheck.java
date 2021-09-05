@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 import br.alkazuz.kitpvp.anticheat.Utills;
 
 public class MoveCheck implements Runnable {
-	
+
 	public static HashMap<Player, Location> LastLocation;
 	public static HashMap<Player, ArrayList<MoveLog>> Moves;
 	public static HashMap<Player, Long> InvalidateExpires;
@@ -20,37 +20,38 @@ public class MoveCheck implements Runnable {
 	public static int CheckCounter = 0;
 	public static Player LastHacker;
 	public static Server server;
-  
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void AddMove(Player Jogador, Location Local) {
 		if ((Utills.Flight(Jogador)) && (Utills.Speeding(Jogador))) {
 			return;
 		}
-		Long expires = (Long)InvalidateExpires.get(Jogador);
+		Long expires = (Long) InvalidateExpires.get(Jogador);
 		if ((expires != null) && (expires.longValue() > System.currentTimeMillis())) {
 			return;
 		}
 		if (!Moves.containsKey(Jogador)) {
 			Moves.put(Jogador, new ArrayList<>());
-		} synchronized ((ArrayList)Moves.get(Jogador)) {
+		}
+		synchronized ((ArrayList) Moves.get(Jogador)) {
 			MoveCheck tmp97_94 = Instance;
 			tmp97_94.getClass();
-			((ArrayList)Moves.get(Jogador)).add(new MoveLog(Jogador, Local));
+			((ArrayList) Moves.get(Jogador)).add(new MoveLog(Jogador, Local));
 		}
 	}
-	
+
 	@SuppressWarnings("rawtypes")
 	public static void Invalidate(Player Jogador, long Tempo) {
 		if (Moves.containsKey(Jogador)) {
-			((ArrayList)Moves.get(Jogador)).clear();
+			((ArrayList) Moves.get(Jogador)).clear();
 		}
 		Tempo += System.currentTimeMillis();
-		Long expires = (Long)InvalidateExpires.get(Jogador);
+		Long expires = (Long) InvalidateExpires.get(Jogador);
 		if ((expires == null) || (expires.longValue() < Tempo)) {
 			InvalidateExpires.put(Jogador, Long.valueOf(Tempo));
 		}
 	}
-  
+
 	public static void Clear(Player player) {
 		if (Moves.containsKey(player)) {
 			Moves.remove(player);
@@ -59,16 +60,16 @@ public class MoveCheck implements Runnable {
 			LastLocation.remove(player);
 		}
 	}
-  
+
 	public MoveCheck() {
 		LastLocation = new HashMap<>();
 		Moves = new HashMap<>();
 		InvalidateExpires = new HashMap<>();
-    
+
 		Instance = this;
 	}
-  
-	@SuppressWarnings({ "deprecation", "rawtypes", "unchecked" })
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void run() {
 		Player[] arrayOfJogador;
 		int j = (arrayOfJogador = Bukkit.getOnlinePlayers()).length;
@@ -78,22 +79,26 @@ public class MoveCheck implements Runnable {
 				LastLocation.put(Jogador, Jogador.getLocation().clone());
 			} else {
 				try {
-					synchronized ((ArrayList)Moves.get(Jogador)) {
-						ArrayList<Jump> jumps = GetJumps((ArrayList)Moves.get(Jogador));
+					synchronized ((ArrayList) Moves.get(Jogador)) {
+						ArrayList<Jump> jumps = GetJumps((ArrayList) Moves.get(Jogador));
 						for (Jump jump : jumps) {
-							int Ping = ((CraftPlayer)Jogador).getHandle().ping;
+							int Ping = ((CraftPlayer) Jogador).getHandle().ping;
 							if ((!jump.isOnGround) && (!Utills.Flight(Jogador))) {
 								Utills.Hack Fly = Utills.Hack.FLY;
-								
+
 								if ((jump.height > 5.0D) || (jump.isFloating)) {
-									Utills.Fly = Fly.getMenssagem().replace("nick", Jogador.getDisplayName()).replace("avisos", Utills.AvisosFly.get(Jogador) + "").replace("ping", Ping + "");
+									Utills.Fly = Fly.getMenssagem().replace("nick", Jogador.getDisplayName())
+											.replace("avisos", Utills.AvisosFly.get(Jogador) + "")
+											.replace("ping", Ping + "");
 									if (Utills.Fly != null) {
 										Utills.AvisosFly.put(Jogador, Utills.AvisosFly.get(Jogador) + 1);
 										Utills.sendAntiCheat(Utills.Fly);
 									}
 									Utills.Fly = null;
 								} else if (((jump.height >= 1.3D) && (!jump.isOnFire)) || (jump.height >= 2.0D)) {
-									Utills.Fly = Fly.getMenssagem().replace("nick", Jogador.getDisplayName()).replace("avisos", Utills.AvisosFly.get(Jogador) + "").replace("ping", Ping + "");
+									Utills.Fly = Fly.getMenssagem().replace("nick", Jogador.getDisplayName())
+											.replace("avisos", Utills.AvisosFly.get(Jogador) + "")
+											.replace("ping", Ping + "");
 									if (Utills.Fly != null) {
 										Utills.AvisosFly.put(Jogador, Utills.AvisosFly.get(Jogador) + 1);
 										Utills.sendAntiCheat(Utills.Fly);
@@ -102,18 +107,22 @@ public class MoveCheck implements Runnable {
 								}
 							}
 							if (!Utills.Speeding(Jogador)) {
-								
+
 								Utills.Hack Speed = Utills.Hack.SPEED;
-								if (((jump.horizontalSpeed > 10.0D) && (jump.time > 0.5D)) || ((jump.horizontalSpeed > 9.0D) && (jump.time > 1.5D))) {
-									Utills.Speed = Speed.getMenssagem().replace("nick", Jogador.getDisplayName()).replace("avisos", Utills.AvisosSpeed.get(Jogador) + "").replace("ping", Ping + "");
+								if (((jump.horizontalSpeed > 10.0D) && (jump.time > 0.5D))
+										|| ((jump.horizontalSpeed > 9.0D) && (jump.time > 1.5D))) {
+									Utills.Speed = Speed.getMenssagem().replace("nick", Jogador.getDisplayName())
+											.replace("avisos", Utills.AvisosSpeed.get(Jogador) + "")
+											.replace("ping", Ping + "");
 									if (Utills.Speed != null) {
 										Utills.AvisosSpeed.put(Jogador, Utills.AvisosSpeed.get(Jogador) + 1);
 										Utills.sendAntiCheat(Utills.Speed);
 									}
 									Utills.Speed = null;
-								}
-								else if ((jump.horizontalSpeed > 11.0D) && (jump.time > 0.5D)) {
-									Utills.Speed = Speed.getMenssagem().replace("nick", Jogador.getDisplayName()).replace("avisos", Utills.AvisosSpeed.get(Jogador) + "").replace("ping", Ping + "");
+								} else if ((jump.horizontalSpeed > 11.0D) && (jump.time > 0.5D)) {
+									Utills.Speed = Speed.getMenssagem().replace("nick", Jogador.getDisplayName())
+											.replace("avisos", Utills.AvisosSpeed.get(Jogador) + "")
+											.replace("ping", Ping + "");
 									if (Utills.Speed != null) {
 										Utills.AvisosSpeed.put(Jogador, Utills.AvisosSpeed.get(Jogador) + 1);
 										Utills.sendAntiCheat(Utills.Speed);
@@ -122,11 +131,10 @@ public class MoveCheck implements Runnable {
 								}
 							}
 						}
-						((ArrayList)Moves.get(Jogador)).clear();
+						((ArrayList) Moves.get(Jogador)).clear();
 					}
 					LastLocation.put(Jogador, Jogador.getLocation());
-				}
-				catch (Exception e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -136,45 +144,52 @@ public class MoveCheck implements Runnable {
 			Moves = new HashMap();
 		}
 	}
-  
+
 	public String GetLocationString(Location l) {
 		return "(" + l.getX() + ", " + l.getY() + ", " + l.getZ() + ")";
 	}
-  
+
 	public static ArrayList<Jump> GetJumps(ArrayList<MoveLog> moves) {
 		int inc = 1;
-    
+
 		ArrayList<Jump> jumps = new ArrayList<>();
 		while (inc < moves.size()) {
-			if (((MoveLog)moves.get(inc)).isInVehicle) {
+			if (((MoveLog) moves.get(inc)).isInVehicle) {
 				return new ArrayList<>();
 			}
 			int startInc = inc;
-			while ((inc < moves.size()) && (!((MoveLog)moves.get(inc)).isAir)) {
+			while ((inc < moves.size()) && (!((MoveLog) moves.get(inc)).isAir)) {
 				inc++;
 			}
 			if (inc > startInc + 5) {
-				MoveCheck tmp79_76 = Instance;tmp79_76.getClass();Jump jump = new Jump((MoveLog)moves.get(startInc), (MoveLog)moves.get((inc + startInc - 1) / 2), (MoveLog)moves.get(inc - 1));
+				MoveCheck tmp79_76 = Instance;
+				tmp79_76.getClass();
+				Jump jump = new Jump((MoveLog) moves.get(startInc), (MoveLog) moves.get((inc + startInc - 1) / 2),
+						(MoveLog) moves.get(inc - 1));
 				jump.isOnGround = true;
 				jumps.add(jump);
 			}
 			if (inc >= moves.size()) {
 				break;
-			}	
-			MoveLog start = (MoveLog)moves.get(inc - 1);
-			while ((inc < moves.size()) && (((MoveLog)moves.get(inc)).isAir) && (((MoveLog)moves.get(inc)).location.getY() > ((MoveLog)moves.get(inc - 1)).location.getY())) {
+			}
+			MoveLog start = (MoveLog) moves.get(inc - 1);
+			while ((inc < moves.size()) && (((MoveLog) moves.get(inc)).isAir)
+					&& (((MoveLog) moves.get(inc)).location.getY() > ((MoveLog) moves.get(inc - 1)).location.getY())) {
 				inc++;
 			}
 			if (inc >= moves.size()) {
-				MoveCheck tmp235_232 = Instance;tmp235_232.getClass();jumps.add(new Jump(start, (MoveLog)moves.get(inc - 1), (MoveLog)moves.get(inc - 1)));
+				MoveCheck tmp235_232 = Instance;
+				tmp235_232.getClass();
+				jumps.add(new Jump(start, (MoveLog) moves.get(inc - 1), (MoveLog) moves.get(inc - 1)));
 				break;
 			}
-			MoveLog apex = (MoveLog)moves.get(inc - 1);
+			MoveLog apex = (MoveLog) moves.get(inc - 1);
 			boolean isFloating = false;
 			boolean isOnFire = false;
 			int floatCount = 0;
-			while ((inc < moves.size()) && (((MoveLog)moves.get(inc)).isAir)) {
-				if ((((MoveLog)moves.get(inc - 1)).location.getY() == ((MoveLog)moves.get(inc)).location.getY()) && (!((MoveLog)moves.get(inc)).isOnLadder)) {
+			while ((inc < moves.size()) && (((MoveLog) moves.get(inc)).isAir)) {
+				if ((((MoveLog) moves.get(inc - 1)).location.getY() == ((MoveLog) moves.get(inc)).location.getY())
+						&& (!((MoveLog) moves.get(inc)).isOnLadder)) {
 					floatCount++;
 					if (floatCount > 3) {
 						isFloating = true;
@@ -182,16 +197,16 @@ public class MoveCheck implements Runnable {
 				} else {
 					floatCount = 0;
 				}
-				if (((MoveLog)moves.get(inc)).isOnFire) {
+				if (((MoveLog) moves.get(inc)).isOnFire) {
 					isOnFire = true;
 				}
 				inc++;
 			}
 			MoveLog end;
 			if (inc >= moves.size()) {
-				end = (MoveLog)moves.get(moves.size() - 1);
+				end = (MoveLog) moves.get(moves.size() - 1);
 			} else {
-				end = (MoveLog)moves.get(inc);
+				end = (MoveLog) moves.get(inc);
 			}
 			MoveCheck tmp433_430 = Instance;
 			tmp433_430.getClass();

@@ -9,17 +9,18 @@ import br.alkazuz.kitpvp.menu.MenusAPI;
 import br.alkazuz.kitpvp.mysql.manager.Status;
 import br.alkazuz.kitpvp.score.ScoreBoarding;
 
-public class CaixasI extends Conquista{
+public class CaixasI extends Conquista {
 
 	public CaixasI() {
-		super("Caixas I", new String[] {"","§fJunte §e5 §fcaixas"}, 300);
+		super("Caixas I", new String[] { "", "§fJunte §e5 §fcaixas" }, 300);
 	}
-	
+
 	@Override
 	public boolean onComplete(Player p) {
-		if(Status.getCaixas(p)>= 5) {
+		if (Status.getCaixas(p) >= 5) {
 			ConquistaAPI.addConquista(p, this.getName());
-			p.sendMessage(MessageAPI.Command_Succes+"Você completou essa conquista e ganhou §e"+MenusAPI.money(getPremio()));
+			p.sendMessage(MessageAPI.Command_Succes + "Você completou essa conquista e ganhou §e"
+					+ MenusAPI.money(getPremio()));
 			Status.addCoins(p, this.getPremio());
 			ScoreBoarding.setScoreBoard(p);
 			return true;

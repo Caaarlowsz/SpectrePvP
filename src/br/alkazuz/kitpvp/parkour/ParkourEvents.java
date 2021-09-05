@@ -12,44 +12,44 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import br.alkazuz.kitpvp.api.MessageAPI;
 import br.alkazuz.kitpvp.api.WarpAPI;
 
-public class ParkourEvents implements Listener{
-	
+public class ParkourEvents implements Listener {
+
 	@EventHandler
 	public void onMove(PlayerMoveEvent ev) {
 		Player p = ev.getPlayer();
-		if(!ParkourAPI.isPlaying(p))return;
-		Block block = p.getWorld().getBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockY() - 1, p.getLocation().getBlockZ());
-		if(block.getTypeId() == 41) {
+		if (!ParkourAPI.isPlaying(p))
+			return;
+		Block block = p.getWorld().getBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockY() - 1,
+				p.getLocation().getBlockZ());
+		if (block.getTypeId() == 41) {
 			ParkourAPI.saveLocation(p);
 		}
-		if(p.getLocation().getY() < 30) {
+		if (p.getLocation().getY() < 30) {
 			p.teleport(ParkourAPI.getLocation(p));
-			p.sendMessage(MessageAPI.Command_Succes+"Você foi teleportado para o ultimo Save");
+			p.sendMessage(MessageAPI.Command_Succes + "Você foi teleportado para o ultimo Save");
 		}
 	}
-	
+
 	@EventHandler
 	public void onInteract(PlayerInteractEvent ev) {
 		Player p = ev.getPlayer();
-		if(!ParkourAPI.isPlaying(p))return;
-		if(p.getItemInHand() != null &&p.getItemInHand().getType() == Material.REDSTONE_BLOCK) {
+		if (!ParkourAPI.isPlaying(p))
+			return;
+		if (p.getItemInHand() != null && p.getItemInHand().getType() == Material.REDSTONE_BLOCK) {
 			WarpAPI.setWarp(p, "Spawn");
 			br.alkazuz.kitpvp.api.API.sendItems(p);
 			ParkourAPI.delLocation(p);
 			ParkourAPI.delPlayer(p);
 		}
 	}
-	
+
 	@EventHandler
-	  public void onMe2(PlayerCommandPreprocessEvent event)
-	  {
-	    Player p = event.getPlayer();
-	    if (ParkourAPI.isPlaying(p) && (
-	      (event.getMessage().toLowerCase().startsWith("/"))))
-	    {
-	      event.setCancelled(true);
-	      p.sendMessage(MessageAPI.Command_Error+"Você não pode executar comandos no Parkour");
-	    }
-	  }
+	public void onMe2(PlayerCommandPreprocessEvent event) {
+		Player p = event.getPlayer();
+		if (ParkourAPI.isPlaying(p) && ((event.getMessage().toLowerCase().startsWith("/")))) {
+			event.setCancelled(true);
+			p.sendMessage(MessageAPI.Command_Error + "Você não pode executar comandos no Parkour");
+		}
+	}
 
 }

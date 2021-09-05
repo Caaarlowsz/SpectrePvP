@@ -13,21 +13,25 @@ import br.alkazuz.kitpvp.api.API;
 import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
 
-public class Camel extends Kit implements Listener{
-	
+public class Camel extends Kit implements Listener {
+
 	public Camel() {
-		//super("Camel", new String[] {" ","§7Fique mais forte no deserto"},new ItemStack(Material.SAND), "kit.camel",KitType.BASIC);
-		super("Camel", 1300, false, new ItemStack(Material.SAND), false, "kit.camel", true, new String[] {" "," §e§l- §7Fique mais forte no deserto"});
+		// super("Camel", new String[] {" ","§7Fique mais forte no deserto"},new
+		// ItemStack(Material.SAND), "kit.camel",KitType.BASIC);
+		super("Camel", 1300, false, new ItemStack(Material.SAND), false, "kit.camel", true,
+				new String[] { " ", " §e§l- §7Fique mais forte no deserto" });
 	}
 
 	@EventHandler
-    public void onPlayerCamel(final PlayerMoveEvent e) {
-        final Player p = e.getPlayer();
-        if ((e.getTo().getBlock().getRelative(BlockFace.DOWN).getType() == Material.SAND || e.getTo().getBlock().getRelative(BlockFace.DOWN).getType() == Material.SANDSTONE) && KitAPI.getKitName(p).equalsIgnoreCase("Camel")) {
-        	API.darEfeito(p, PotionEffectType.INCREASE_DAMAGE, 3, 1);
-            API.darEfeito(p, PotionEffectType.DAMAGE_RESISTANCE, 3, 1);
-            API.darEfeito(p, PotionEffectType.SPEED, 4, 0);
-        }
-    }
-	
+	public void onPlayerCamel(final PlayerMoveEvent e) {
+		final Player p = e.getPlayer();
+		if ((e.getTo().getBlock().getRelative(BlockFace.DOWN).getType() == Material.SAND
+				|| e.getTo().getBlock().getRelative(BlockFace.DOWN).getType() == Material.SANDSTONE)
+				&& KitAPI.getKitName(p).equalsIgnoreCase("Camel")) {
+			API.darEfeito(p, PotionEffectType.INCREASE_DAMAGE, 3, 1);
+			API.darEfeito(p, PotionEffectType.DAMAGE_RESISTANCE, 3, 1);
+			API.darEfeito(p, PotionEffectType.SPEED, 4, 0);
+		}
+	}
+
 }

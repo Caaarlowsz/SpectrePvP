@@ -11,20 +11,25 @@ import org.bukkit.inventory.ItemStack;
 import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
 
-public class Fisherman extends Kit implements Listener{
-	
+public class Fisherman extends Kit implements Listener {
+
 	public Fisherman() {
-		/*super("Fisherman", new String[] {" ","§7Pesque seus inimigos usando uma vara de pescar."}
-		,new ItemStack(Material.FISHING_ROD), "kit.Fisherman",KitType.BASIC);*/
-		super("Fisherman", 0, true, new ItemStack(Material.FISHING_ROD), true, "kit.fisherman", true, new String[] {" ","§e§l- §7Pesque seus inimigos usando uma vara de pescar."});
+		/*
+		 * super("Fisherman", new String[]
+		 * {" ","§7Pesque seus inimigos usando uma vara de pescar."} ,new
+		 * ItemStack(Material.FISHING_ROD), "kit.Fisherman",KitType.BASIC);
+		 */
+		super("Fisherman", 0, true, new ItemStack(Material.FISHING_ROD), true, "kit.fisherman", true,
+				new String[] { " ", "§e§l- §7Pesque seus inimigos usando uma vara de pescar." });
 	}
-	
+
 	@EventHandler
-    public void onPlayerFish(final PlayerFishEvent event) {
-        final Entity caught = event.getCaught();
-        final Block block = event.getHook().getLocation().getBlock();
-        if (caught != null && caught != block && KitAPI.getKitName(event.getPlayer()).equalsIgnoreCase(this.getName())) {
-            caught.teleport(event.getPlayer().getLocation());
-        }
-    }
+	public void onPlayerFish(final PlayerFishEvent event) {
+		final Entity caught = event.getCaught();
+		final Block block = event.getHook().getLocation().getBlock();
+		if (caught != null && caught != block
+				&& KitAPI.getKitName(event.getPlayer()).equalsIgnoreCase(this.getName())) {
+			caught.teleport(event.getPlayer().getLocation());
+		}
+	}
 }

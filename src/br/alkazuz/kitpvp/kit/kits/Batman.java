@@ -19,17 +19,18 @@ import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
 import br.alkazuz.kitpvp.main.Main;
 
-public class Batman extends Kit implements Listener{
-	
+public class Batman extends Kit implements Listener {
+
 	public Batman() {
-		/*super("Batman", new String[] {" ","§7Atrapalhe seus inimigos com Morcegos"},
-				new ItemStack(Material.MONSTER_EGG, 1, 
-						(short)EntityType.BAT.ordinal()), 
-				"kit.batman",KitType.BASIC);*/
-		super("Batman", 1000, false, new ItemStack(Material.MONSTER_EGG, 1, 
-						(short)EntityType.BAT.ordinal()), true, "kit.batman", true, new String[] {" "," §e§l- §7Atrapalhe seus inimigos com Morcegos"});
+		/*
+		 * super("Batman", new String[] {" ","§7Atrapalhe seus inimigos com Morcegos"},
+		 * new ItemStack(Material.MONSTER_EGG, 1, (short)EntityType.BAT.ordinal()),
+		 * "kit.batman",KitType.BASIC);
+		 */
+		super("Batman", 1000, false, new ItemStack(Material.MONSTER_EGG, 1, (short) EntityType.BAT.ordinal()), true,
+				"kit.batman", true, new String[] { " ", " §e§l- §7Atrapalhe seus inimigos com Morcegos" });
 	}
-	
+
 	@EventHandler
 	public void batmanHabilidade(PlayerInteractEntityEvent evento) {
 		final Player jogador = evento.getPlayer();
@@ -37,9 +38,10 @@ public class Batman extends Kit implements Listener{
 			if (jogador.getItemInHand().getType().equals(Material.MONSTER_EGG)) {
 				if ((evento.getRightClicked() instanceof Player)) {
 					if (CooldownAPI.Cooldown.containsKey(jogador.getName())) {
-						jogador.sendMessage(MessageAPI.Command_Error+"Você está com um Cooldown de §e" + CooldownAPI.Cooldown(jogador) + "s");
-	                    return;
-	                }
+						jogador.sendMessage(MessageAPI.Command_Error + "Você está com um Cooldown de §e"
+								+ CooldownAPI.Cooldown(jogador) + "s");
+						return;
+					}
 					CooldownAPI.addCooldown(jogador, 45);
 					final Bat bat1 = (Bat) Bukkit.getWorld(jogador.getWorld().getName())
 							.spawnEntity(jogador.getEyeLocation(), EntityType.BAT);

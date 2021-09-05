@@ -1,6 +1,5 @@
 ﻿package br.alkazuz.kitpvp.protection;
 
-public enum ImortalEnum
-{
-  OFF, ON;
+public enum ImortalEnum {
+	OFF, ON;
 }

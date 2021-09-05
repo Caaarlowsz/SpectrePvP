@@ -18,12 +18,12 @@ import br.alkazuz.kitpvp.score.ScoreBoarding;
 import br.alkazuz.kitpvp.simulador.EstadoHG;
 import br.alkazuz.kitpvp.simulador.EventosAPI;
 
-public class cSpawn implements CommandExecutor{
+public class cSpawn implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender Sender, Command Cmd, String Label, String[] Args) {
-		Player p = (Player)Sender;
-		if(Cmd.getName().equalsIgnoreCase("spawn")){
+		Player p = (Player) Sender;
+		if (Cmd.getName().equalsIgnoreCase("spawn")) {
 			p.sendMessage("§aTeleportando para o Spawn...");
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
 				public void run() {
@@ -35,12 +35,11 @@ public class cSpawn implements CommandExecutor{
 					ScoreBoarding.setScoreBoard(p);
 					ParkourAPI.delPlayer(p);
 					RDMApi.delPlayer(p);
-					if(EventosAPI.playerPlayingHG(p)) {
+					if (EventosAPI.playerPlayingHG(p)) {
 						EventosAPI.playersHG.remove(p.getName());
-						if(Main.EstadoHG != EstadoHG.INICIANDO)
-						{
-							for(Player pf : Bukkit.getOnlinePlayers()) {
-								if(EventosAPI.playerPlayingHG(pf)) {
+						if (Main.EstadoHG != EstadoHG.INICIANDO) {
+							for (Player pf : Bukkit.getOnlinePlayers()) {
+								if (EventosAPI.playerPlayingHG(pf)) {
 									EventosAPI.CheckarGanhador(pf);
 								}
 							}

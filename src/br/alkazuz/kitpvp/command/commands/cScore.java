@@ -12,36 +12,37 @@ import br.alkazuz.kitpvp.api.MessageAPI;
 import br.alkazuz.kitpvp.main.Main;
 import br.alkazuz.kitpvp.score.ScoreBoarding;
 
-public class cScore implements CommandExecutor{
+public class cScore implements CommandExecutor {
 
 	public static ArrayList<Player> delay = new ArrayList<Player>();
-	
+
 	@Override
 	public boolean onCommand(CommandSender Sender, Command Cmd, String Label, String[] Args) {
-		if(!(Sender instanceof Player)){
+		if (!(Sender instanceof Player)) {
 			return false;
 		}
-		Player p = (Player)Sender;
-		if(Cmd.getName().equalsIgnoreCase("scoreboard")){
-			if(delay.contains(p)){
-				p.sendMessage(MessageAPI.Command_Error+"Você está em cooldown desse comando");
+		Player p = (Player) Sender;
+		if (Cmd.getName().equalsIgnoreCase("scoreboard")) {
+			if (delay.contains(p)) {
+				p.sendMessage(MessageAPI.Command_Error + "Você está em cooldown desse comando");
 				return true;
 			}
-			if(ScoreBoarding.Score.contains(p)){
+			if (ScoreBoarding.Score.contains(p)) {
 				ScoreBoarding.Score.remove(p);
-			}else{
+			} else {
 				ScoreBoarding.Score.add(p);
 			}
-			
-			p.sendMessage(MessageAPI.Command_Succes+"Sua Scoreboard foi "+ (ScoreBoarding.Score.contains(p) ? "§aativada" : "§4desativada"));
+
+			p.sendMessage(MessageAPI.Command_Succes + "Sua Scoreboard foi "
+					+ (ScoreBoarding.Score.contains(p) ? "§aativada" : "§4desativada"));
 			delay.add(p);
 			ScoreBoarding.setScoreBoard(p);
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), (Runnable)new Runnable() {
-		          @Override
-		          public void run() {
-		        	  delay.remove(p);
-		          }
-		      }, 20L * 10L);
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), (Runnable) new Runnable() {
+				@Override
+				public void run() {
+					delay.remove(p);
+				}
+			}, 20L * 10L);
 		}
 		return false;
 	}

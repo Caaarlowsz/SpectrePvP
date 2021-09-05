@@ -9,21 +9,20 @@ import org.bukkit.help.HelpTopic;
 
 import br.alkazuz.kitpvp.api.MessageAPI;
 
-public class ComandInexistente implements Listener
-{
-    @EventHandler
-    public void onPlayerCommandPreprocess(final PlayerCommandPreprocessEvent e) {
-    	
-        if (!e.isCancelled()) {
-            final Player player = e.getPlayer();
-            final String cmd = e.getMessage().split(" ")[0];
-            final HelpTopic topic = Bukkit.getServer().getHelpMap().getHelpTopic(cmd);
-            if (topic == null) {
-            	
-                player.sendMessage(MessageAPI.Command_Error+"Comando inexistente ou você não tem acesso");
-                e.setCancelled(true);
-            }
-        }
-    }
+public class ComandInexistente implements Listener {
+	@EventHandler
+	public void onPlayerCommandPreprocess(final PlayerCommandPreprocessEvent e) {
+
+		if (!e.isCancelled()) {
+			final Player player = e.getPlayer();
+			final String cmd = e.getMessage().split(" ")[0];
+			final HelpTopic topic = Bukkit.getServer().getHelpMap().getHelpTopic(cmd);
+			if (topic == null) {
+
+				player.sendMessage(MessageAPI.Command_Error + "Comando inexistente ou você não tem acesso");
+				e.setCancelled(true);
+			}
+		}
+	}
 
 }

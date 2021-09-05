@@ -9,23 +9,23 @@ import br.alkazuz.kitpvp.menu.MenusAPI;
 import br.alkazuz.kitpvp.mysql.manager.Status;
 import br.alkazuz.kitpvp.score.ScoreBoarding;
 
-public class NoobII extends Conquista{
+public class NoobII extends Conquista {
 
 	public NoobII() {
-		super("Noob II", new String[] {"","§fMorra §c20 §fvezes na Arena"}, 300);
+		super("Noob II", new String[] { "", "§fMorra §c20 §fvezes na Arena" }, 300);
 	}
-	
 
 	@Override
 	public boolean onComplete(Player p) {
-		if(Status.getDeaths(p)>= 20) {
+		if (Status.getDeaths(p) >= 20) {
 			ConquistaAPI.addConquista(p, this.getName());
-			p.sendMessage(MessageAPI.Command_Succes+"Você completou essa conquista e ganhou §e"+MenusAPI.money(getPremio()));
+			p.sendMessage(MessageAPI.Command_Succes + "Você completou essa conquista e ganhou §e"
+					+ MenusAPI.money(getPremio()));
 			Status.addCoins(p, this.getPremio());
 			ScoreBoarding.setScoreBoard(p);
 			return true;
 		}
 		return false;
 	}
-	
+
 }

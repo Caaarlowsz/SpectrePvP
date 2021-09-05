@@ -10,17 +10,18 @@ import br.alkazuz.kitpvp.mysql.manager.MySQLFunctions;
 import br.alkazuz.kitpvp.mysql.manager.Status;
 import br.alkazuz.kitpvp.score.ScoreBoarding;
 
-public class MestreII extends Conquista{
+public class MestreII extends Conquista {
 
 	public MestreII() {
-		super("MestreX1 II", new String[] {"","§fTenha §e20 §fvitórias na warp 1v1"}, 500);
+		super("MestreX1 II", new String[] { "", "§fTenha §e20 §fvitórias na warp 1v1" }, 500);
 	}
-	
+
 	@Override
 	public boolean onComplete(Player p) {
-		if(MySQLFunctions.getWins(p)>= 20) {
+		if (MySQLFunctions.getWins(p) >= 20) {
 			ConquistaAPI.addConquista(p, this.getName());
-			p.sendMessage(MessageAPI.Command_Succes+"Você completou essa conquista e ganhou §e"+MenusAPI.money(getPremio()));
+			p.sendMessage(MessageAPI.Command_Succes + "Você completou essa conquista e ganhou §e"
+					+ MenusAPI.money(getPremio()));
 			Status.addCoins(p, this.getPremio());
 			ScoreBoarding.setScoreBoard(p);
 			return true;

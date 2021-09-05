@@ -6,7 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class Events implements Listener {
-	
+
 	@EventHandler
 	private void onPlayerJoinEvent(PlayerJoinEvent event) {
 		if (!(event.getPlayer() instanceof Player)) {

@@ -14,26 +14,26 @@ import org.bukkit.potion.PotionEffectType;
 import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
 
+public class Snail extends Kit implements Listener {
 
-public class Snail extends Kit implements Listener{
-	
 	public Snail() {
-		//super("Snail", new String[] {" ","§7Tenha chance de deixar seu inimigo lento"},new ItemStack(Material.WEB), "kit.Snail",KitType.AVANCED);
-		super("Snail", 3500, false, new ItemStack(Material.WEB), false, "kit.snail", false, new String[] {" "," §e§l- §7Tenha chance de deixar seu inimigo lento"});
+		// super("Snail", new String[] {" ","§7Tenha chance de deixar seu inimigo
+		// lento"},new ItemStack(Material.WEB), "kit.Snail",KitType.AVANCED);
+		super("Snail", 3500, false, new ItemStack(Material.WEB), false, "kit.snail", false,
+				new String[] { " ", " §e§l- §7Tenha chance de deixar seu inimigo lento" });
 	}
-	
-	  @EventHandler
-	  public void onPosion(EntityDamageByEntityEvent e) {
-	    if (((e.getDamager() instanceof Player)) && ((e.getEntity() instanceof Player)))
-	    {
-	      Player p = (Player)e.getEntity();
-	      Player d = (Player)e.getDamager();
-	      if (KitAPI.getKitName(d) == "Snail")  {
-	        Random r = new Random();
-	        int rand = r.nextInt(100);
-	        if (rand >= 67)
-	          p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 80, 0));
-	      }
-	    }
-	  }
- }
+
+	@EventHandler
+	public void onPosion(EntityDamageByEntityEvent e) {
+		if (((e.getDamager() instanceof Player)) && ((e.getEntity() instanceof Player))) {
+			Player p = (Player) e.getEntity();
+			Player d = (Player) e.getDamager();
+			if (KitAPI.getKitName(d) == "Snail") {
+				Random r = new Random();
+				int rand = r.nextInt(100);
+				if (rand >= 67)
+					p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 80, 0));
+			}
+		}
+	}
+}

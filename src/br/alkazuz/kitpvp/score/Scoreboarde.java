@@ -89,9 +89,8 @@ public class Scoreboarde {
 	}
 
 	public static void update(final Player p) {
-		//PlayerData data = DataManager.getPlayerData(p);
+		// PlayerData data = DataManager.getPlayerData(p);
 		Thread th = new Thread(new Runnable() {
-			@SuppressWarnings("deprecation")
 			@Override
 			public void run() {
 
@@ -112,14 +111,14 @@ public class Scoreboarde {
 
 						l13.setSuffix("");
 						l12.setSuffix(" §7");
-						l11.setSuffix(" §7" );
-						l10.setSuffix(" §7" );
+						l11.setSuffix(" §7");
+						l10.setSuffix(" §7");
 						l9.setSuffix(" ");
 						l8.setSuffix(" ");
 						l7.setSuffix(" §a" + Bukkit.getOnlinePlayers().length + "/130");
 						l5.setSuffix(" §a");
-						l4.setSuffix(" §a" );
-						l3.setSuffix(" §a" );
+						l4.setSuffix(" §a");
+						l3.setSuffix(" §a");
 						l1.setSuffix("");
 					}
 				}
@@ -133,7 +132,6 @@ public class Scoreboarde {
 		try {
 			new BukkitRunnable() {
 
-				@SuppressWarnings("deprecation")
 				@Override
 				public void run() {
 					for (Player p : Bukkit.getOnlinePlayers()) {

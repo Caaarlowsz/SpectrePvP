@@ -14,25 +14,25 @@ import br.alkazuz.kitpvp.api.WarpAPI;
 import br.alkazuz.kitpvp.main.Main;
 import br.alkazuz.kitpvp.score.ScoreBoarding;
 
-public class SimuladorComandos implements CommandExecutor, Listener{
+public class SimuladorComandos implements CommandExecutor, Listener {
 	@Override
 	public boolean onCommand(CommandSender Sender, Command Cmd, String Label, String[] Args) {
-		Player p = (Player)Sender;
-		if(Cmd.getName().equalsIgnoreCase("asimulador")){
-			if(p.hasPermission("spectrepvp.admin")){
-				
+		Player p = (Player) Sender;
+		if (Cmd.getName().equalsIgnoreCase("asimulador")) {
+			if (p.hasPermission("spectrepvp.admin")) {
+
 			}
 		}
-		if(Cmd.getName().equalsIgnoreCase("simulador")){
-			if(EventosAPI.playerPlayingHG(p)){
+		if (Cmd.getName().equalsIgnoreCase("simulador")) {
+			if (EventosAPI.playerPlayingHG(p)) {
 				p.sendMessage("§cVocê já está no Simulador");
 				return true;
 			}
-			if(Main.EstadoHG == EstadoHG.ANDAMENTO|| Main.EstadoHG == EstadoHG.INVENCIVEL){
+			if (Main.EstadoHG == EstadoHG.ANDAMENTO || Main.EstadoHG == EstadoHG.INVENCIVEL) {
 				p.sendMessage("§cA partida está em andamento, você será notificado quando a partida terminar!");
 				return true;
 			}
-			if(!(WarpAPI.getWarp(p).equalsIgnoreCase("spawn"))){
+			if (!(WarpAPI.getWarp(p).equalsIgnoreCase("spawn"))) {
 				p.sendMessage("§cPara poder entrar você precisa ir para o Spawn");
 				return true;
 			}
@@ -43,19 +43,20 @@ public class SimuladorComandos implements CommandExecutor, Listener{
 			p.sendMessage("§6§l! §fMinigame em §eBETA §fqualquer coisa reporte!");
 			ScoreBoarding.setScoreBoard(p);
 			p.getInventory().clear();
-			for(Player pd : Bukkit.getOnlinePlayers()) {
-    			if(EventosAPI.playerPlayingHG(pd)) {
-    				ScoreBoarding.setScoreBoard(pd);
-    			}
-    		}
-			p.getInventory().setItem(4, API.createItem(p, Material.FEATHER, "§eKits", new String[] {""}, 1, (short)0));
-		if(EventosAPI.playersHG.size()<=1){
-			Main.EstadoHG = EstadoHG.INICIANDO;
-			sTempoIniciar.CancelarTempo();
-			sTempoIniciar.Iniciando = 121;
-			new sTempoIniciar();
-		}
-		p.setGameMode(GameMode.SURVIVAL);
+			for (Player pd : Bukkit.getOnlinePlayers()) {
+				if (EventosAPI.playerPlayingHG(pd)) {
+					ScoreBoarding.setScoreBoard(pd);
+				}
+			}
+			p.getInventory().setItem(4,
+					API.createItem(p, Material.FEATHER, "§eKits", new String[] { "" }, 1, (short) 0));
+			if (EventosAPI.playersHG.size() <= 1) {
+				Main.EstadoHG = EstadoHG.INICIANDO;
+				sTempoIniciar.CancelarTempo();
+				sTempoIniciar.Iniciando = 121;
+				new sTempoIniciar();
+			}
+			p.setGameMode(GameMode.SURVIVAL);
 		}
 		return true;
 	}

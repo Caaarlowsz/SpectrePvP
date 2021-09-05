@@ -9,17 +9,18 @@ import br.alkazuz.kitpvp.menu.MenusAPI;
 import br.alkazuz.kitpvp.mysql.manager.Status;
 import br.alkazuz.kitpvp.score.ScoreBoarding;
 
-public class InicianteIII extends Conquista{
+public class InicianteIII extends Conquista {
 
 	public InicianteIII() {
-		super("Iniciante III", new String[] {"","§fMate §c35 §fJogadores na Arena"}, 300);
+		super("Iniciante III", new String[] { "", "§fMate §c35 §fJogadores na Arena" }, 300);
 	}
-	
+
 	@Override
 	public boolean onComplete(Player p) {
-		if(Status.getkills(p)>= 35) {
+		if (Status.getkills(p) >= 35) {
 			ConquistaAPI.addConquista(p, this.getName());
-			p.sendMessage(MessageAPI.Command_Succes+"Você completou essa conquista e ganhou §e"+MenusAPI.money(getPremio()));
+			p.sendMessage(MessageAPI.Command_Succes + "Você completou essa conquista e ganhou §e"
+					+ MenusAPI.money(getPremio()));
 			Status.addCoins(p, this.getPremio());
 			ScoreBoarding.setScoreBoard(p);
 			return true;

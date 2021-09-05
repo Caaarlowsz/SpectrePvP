@@ -9,59 +9,56 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
-public class Protection implements Listener{
+public class Protection implements Listener {
 
 	private static HashMap<Player, ImortalEnum> imortal = new HashMap<Player, ImortalEnum>();
-	  @EventHandler
-	  public void dano(EntityDamageEvent e){
-	    if ((e.getEntity() instanceof Player && e.getCause() != DamageCause.LAVA)){
-	      Player p = (Player)e.getEntity();
-	      if (isImortal(p))
-	        e.setCancelled(true);
-	      
-	     
-	      }
-	    }
 
-	  @EventHandler
-	  public void entityDamage(EntityDamageByEntityEvent e)  {
-		  if(!(e.getEntity() instanceof Player)){
-				return;
+	@EventHandler
+	public void dano(EntityDamageEvent e) {
+		if ((e.getEntity() instanceof Player && e.getCause() != DamageCause.LAVA)) {
+			Player p = (Player) e.getEntity();
+			if (isImortal(p))
+				e.setCancelled(true);
+
+		}
+	}
+
+	@EventHandler
+	public void entityDamage(EntityDamageByEntityEvent e) {
+		if (!(e.getEntity() instanceof Player)) {
+			return;
+		}
+		Player d = (Player) e.getEntity();
+
+		if (e.getCause() == DamageCause.FALL) {
+			if (isImortal(d))
+				e.setCancelled(true);
+		}
+		if ((e.getDamager() instanceof Player)) {
+			Player p = (Player) e.getDamager();
+			if (isImortal(p)) {
+				e.setCancelled(true);
 			}
-		  Player d = (Player) e.getEntity();
-		  
-		  if(e.getCause() == DamageCause.FALL) {
-		      if (isImortal(d))
-			        e.setCancelled(true);
-		  }
-	    if ((e.getDamager() instanceof Player))   {
-	      Player p = (Player)e.getDamager();
-	      if (isImortal(p)){
-	        e.setCancelled(true);
-	      }
 
-	    }
-	  }
+		}
+	}
 
-	  public static ImortalEnum getImortal(Player p)
-	  {
-	    return (ImortalEnum)imortal.get(p);
-	  }
+	public static ImortalEnum getImortal(Player p) {
+		return (ImortalEnum) imortal.get(p);
+	}
 
-	  public static boolean isImortal(Player p)
-	  {
-	    if (getImortal(p) == ImortalEnum.ON) {
-	      return true;
-	    }
-	    return false;
-	  }
+	public static boolean isImortal(Player p) {
+		if (getImortal(p) == ImortalEnum.ON) {
+			return true;
+		}
+		return false;
+	}
 
-	  public static void setImortal(Player p, boolean i)
-	  {
-	    if (i)
-	      imortal.put(p, ImortalEnum.ON);
-	    else
-	      imortal.put(p, ImortalEnum.OFF);
-	  }
+	public static void setImortal(Player p, boolean i) {
+		if (i)
+			imortal.put(p, ImortalEnum.ON);
+		else
+			imortal.put(p, ImortalEnum.OFF);
+	}
 
 }

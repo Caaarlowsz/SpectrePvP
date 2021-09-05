@@ -49,91 +49,93 @@ public class MoveLog {
 	}
 
 	private boolean isMaterialAir(Material Tipo) {
-		return (Tipo == Material.AIR) || (Tipo == Material.TORCH) || (Tipo == Material.REDSTONE_TORCH_OFF) || (Tipo == Material.REDSTONE_TORCH_ON) || (Tipo == Material.SIGN);
+		return (Tipo == Material.AIR) || (Tipo == Material.TORCH) || (Tipo == Material.REDSTONE_TORCH_OFF)
+				|| (Tipo == Material.REDSTONE_TORCH_ON) || (Tipo == Material.SIGN);
 	}
 
 	private boolean isInBlock(Material Tipo) {
-		return (Tipo != Material.AIR) || (Tipo != Material.TORCH) || (Tipo != Material.REDSTONE_TORCH_OFF) || (Tipo != Material.REDSTONE_TORCH_ON) || (Tipo != Material.SIGN);
+		return (Tipo != Material.AIR) || (Tipo != Material.TORCH) || (Tipo != Material.REDSTONE_TORCH_OFF)
+				|| (Tipo != Material.REDSTONE_TORCH_ON) || (Tipo != Material.SIGN);
 	}
 
 	private boolean isBlockAir(Location Local) {
 		Location Localização = Local.clone();
 		double X = Localização.getX();
 		double Y = Localização.getY();
-    	double Z = Localização.getZ();
+		double Z = Localização.getZ();
 
-    	Y = Math.floor(Y) - 0.001D;
+		Y = Math.floor(Y) - 0.001D;
 
-    	Material Tipo = new Location(Localização.getWorld(), X, Y, Z).getBlock().getType();
+		Material Tipo = new Location(Localização.getWorld(), X, Y, Z).getBlock().getType();
 
-    	if (!isMaterialAir(Tipo)) {
-    		return false;
-    	}
-    	boolean Boolean1 = false;
-    	boolean Boolean2 = false;
-    	boolean Boolean3 = false;
-    	boolean Boolean4 = false;
+		if (!isMaterialAir(Tipo)) {
+			return false;
+		}
+		boolean Boolean1 = false;
+		boolean Boolean2 = false;
+		boolean Boolean3 = false;
+		boolean Boolean4 = false;
 
-    	if ((int)X != (int)(Y + 0.32D)) {
-    		Boolean1 = true;
-    		Tipo = new Location(Localização.getWorld(), X + 0.32D, Y, Z).getBlock().getType();
+		if ((int) X != (int) (Y + 0.32D)) {
+			Boolean1 = true;
+			Tipo = new Location(Localização.getWorld(), X + 0.32D, Y, Z).getBlock().getType();
 
-    		if (!isMaterialAir(Tipo)) {
-    			return false;
-    		}
-    	}
-    	if ((int)X != (int)(X - 0.32D)) {
-    		Boolean2 = true;
-    		Tipo = new Location(Localização.getWorld(), X - 0.32D, Y, Z).getBlock().getType();
+			if (!isMaterialAir(Tipo)) {
+				return false;
+			}
+		}
+		if ((int) X != (int) (X - 0.32D)) {
+			Boolean2 = true;
+			Tipo = new Location(Localização.getWorld(), X - 0.32D, Y, Z).getBlock().getType();
 
-    		if (!isMaterialAir(Tipo)) {
-    			return false;
-    		}
-    	}
-    	if ((int)Z != (int)(Z + 0.32D)) {
-    		Boolean3 = true;
-    		Tipo = new Location(Localização.getWorld(), X, Y, Z + 0.32D).getBlock().getType();
+			if (!isMaterialAir(Tipo)) {
+				return false;
+			}
+		}
+		if ((int) Z != (int) (Z + 0.32D)) {
+			Boolean3 = true;
+			Tipo = new Location(Localização.getWorld(), X, Y, Z + 0.32D).getBlock().getType();
 
-    		if (!isMaterialAir(Tipo)) {
-    			return false;
-    		}
-    	}
-    	if ((int)Z != (int)(Z - 0.32D)) {
-    		Boolean4 = true;
-    		Tipo = new Location(Localização.getWorld(), X, Y, Z - 0.32D).getBlock().getType();
-    		
-    		if (!isMaterialAir(Tipo)) {
-    			return false;
-    		}
-    	}
-    	if ((Boolean1) && (Boolean3)) {
-    		Tipo = new Location(Localização.getWorld(), X + 0.32D, Y, Z + 0.32D).getBlock().getType();
+			if (!isMaterialAir(Tipo)) {
+				return false;
+			}
+		}
+		if ((int) Z != (int) (Z - 0.32D)) {
+			Boolean4 = true;
+			Tipo = new Location(Localização.getWorld(), X, Y, Z - 0.32D).getBlock().getType();
 
-    		if (!isMaterialAir(Tipo)) {
-    			return false;
-    		}
-    	}
-    	if ((Boolean1) && (Boolean4)) {
-    		Tipo = new Location(Localização.getWorld(), X + 0.32D, Y, Z - 0.32D).getBlock().getType();
+			if (!isMaterialAir(Tipo)) {
+				return false;
+			}
+		}
+		if ((Boolean1) && (Boolean3)) {
+			Tipo = new Location(Localização.getWorld(), X + 0.32D, Y, Z + 0.32D).getBlock().getType();
 
-    		if (!isMaterialAir(Tipo)) {
-    			return false;
-    		}
-    	}
-    	if ((Boolean2) && (Boolean3)) {
-    		Tipo = new Location(Localização.getWorld(), X - 0.32D, Y, Z + 0.32D).getBlock().getType();
+			if (!isMaterialAir(Tipo)) {
+				return false;
+			}
+		}
+		if ((Boolean1) && (Boolean4)) {
+			Tipo = new Location(Localização.getWorld(), X + 0.32D, Y, Z - 0.32D).getBlock().getType();
 
-    		if (!isMaterialAir(Tipo)) {
-    			return false;
-    		}
-    	}
-    	if ((Boolean2) && (Boolean4)) {
-    		Tipo = new Location(Localização.getWorld(), X - 0.32D, Y, Z - 0.32D).getBlock().getType();
+			if (!isMaterialAir(Tipo)) {
+				return false;
+			}
+		}
+		if ((Boolean2) && (Boolean3)) {
+			Tipo = new Location(Localização.getWorld(), X - 0.32D, Y, Z + 0.32D).getBlock().getType();
 
-    		if (!isMaterialAir(Tipo)) {
-    			return false;
-    		}
-    	}
-    	return true;
+			if (!isMaterialAir(Tipo)) {
+				return false;
+			}
+		}
+		if ((Boolean2) && (Boolean4)) {
+			Tipo = new Location(Localização.getWorld(), X - 0.32D, Y, Z - 0.32D).getBlock().getType();
+
+			if (!isMaterialAir(Tipo)) {
+				return false;
+			}
+		}
+		return true;
 	}
 }

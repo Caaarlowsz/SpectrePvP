@@ -16,46 +16,50 @@ import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
 import br.alkazuz.kitpvp.main.Main;
 
-public class Anchor extends Kit implements Listener{
-	
+public class Anchor extends Kit implements Listener {
+
 	public Anchor() {
-		/*super("Anchor", new String[] {" ",
-				"§7Faz você nao sofrer knockback",""
-						+ "§7Você não dá knockback"},new ItemStack(Material.ANVIL), "kit.anchor",KitType.BASIC);*/
-		super("Anchor", 1300, false, new ItemStack(Material.ANVIL), false, "kit.anchor", true, new String[] {" ",
-				" §e§l⚊  §7Faz você nao sofrer knockback",""
-						+ " §e§l⚊  §7Você não dá knockback"});
+		/*
+		 * super("Anchor", new String[] {" ", "§7Faz você nao sofrer knockback","" +
+		 * "§7Você não dá knockback"},new ItemStack(Material.ANVIL),
+		 * "kit.anchor",KitType.BASIC);
+		 */
+		super("Anchor", 1300, false, new ItemStack(Material.ANVIL), false, "kit.anchor", true, new String[] { " ",
+				" §e§l⚊  §7Faz você nao sofrer knockback", "" + " §e§l⚊  §7Você não dá knockback" });
 	}
-    @EventHandler(priority = EventPriority.MONITOR)
-    public void onPlayerHitAnchor(final EntityDamageByEntityEvent e) {
-        if (!(e.getEntity() instanceof Player)) {
-            return;
-        }
-        if (!(e.getDamager() instanceof Player)) {
-            return;
-        }
-        final Player p = (Player)e.getEntity();
-        final Player a = (Player)e.getDamager();
-        if (KitAPI.getKitName(p).equalsIgnoreCase("Anchor")) {
-            p.setVelocity(new Vector());
-            p.playSound(p.getLocation(), Sound.ANVIL_BREAK, 4.0f, 4.0f);
-            Bukkit.getServer().getScheduler().scheduleSyncDelayedTask((Plugin)Main.getPlugin(), (Runnable)new Runnable() {
-                @Override
-                public void run() {
-                    p.setVelocity(new Vector());
-                }
-            }, 1L);
-        }
-        if (KitAPI.getKitName(a).equalsIgnoreCase("Anchor")) {
-            a.playSound(a.getLocation(), Sound.ANVIL_BREAK, 4.0f, 4.0f);
-            p.setVelocity(new Vector());
-            Bukkit.getServer().getScheduler().scheduleSyncDelayedTask((Plugin)Main.getPlugin(), (Runnable)new Runnable() {
-                @Override
-                public void run() {
-                    p.setVelocity(new Vector());
-                }
-            }, 1L);
-        }
-    }
+
+	@EventHandler(priority = EventPriority.MONITOR)
+	public void onPlayerHitAnchor(final EntityDamageByEntityEvent e) {
+		if (!(e.getEntity() instanceof Player)) {
+			return;
+		}
+		if (!(e.getDamager() instanceof Player)) {
+			return;
+		}
+		final Player p = (Player) e.getEntity();
+		final Player a = (Player) e.getDamager();
+		if (KitAPI.getKitName(p).equalsIgnoreCase("Anchor")) {
+			p.setVelocity(new Vector());
+			p.playSound(p.getLocation(), Sound.ANVIL_BREAK, 4.0f, 4.0f);
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask((Plugin) Main.getPlugin(),
+					(Runnable) new Runnable() {
+						@Override
+						public void run() {
+							p.setVelocity(new Vector());
+						}
+					}, 1L);
+		}
+		if (KitAPI.getKitName(a).equalsIgnoreCase("Anchor")) {
+			a.playSound(a.getLocation(), Sound.ANVIL_BREAK, 4.0f, 4.0f);
+			p.setVelocity(new Vector());
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask((Plugin) Main.getPlugin(),
+					(Runnable) new Runnable() {
+						@Override
+						public void run() {
+							p.setVelocity(new Vector());
+						}
+					}, 1L);
+		}
+	}
 
 }

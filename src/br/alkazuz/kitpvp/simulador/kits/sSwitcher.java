@@ -16,46 +16,44 @@ import org.bukkit.inventory.ItemStack;
 import br.alkazuz.kitpvp.simulador.EventosAPI;
 import br.alkazuz.kitpvp.simulador.KitAPI;
 
-public class sSwitcher implements Listener, CommandExecutor
-{
-    
-    public boolean onCommand(final CommandSender sender, final Command cmd, final String commandLabel, final String[] args) {
-        final Player p = (Player)sender;
-        if (commandLabel.equalsIgnoreCase("sswitcher")) {
-            if (!KitAPI.kits.contains(p.getName())) {
-                    if (!EventosAPI.playerPlayingHG(p)) {
-                        return true;
-                    }
-                    p.sendMessage("§aVocê pegou o kit §fSwitcher");
-                    p.playSound(p.getLocation(), Sound.LEVEL_UP, 4.0f, 4.0f);
-                    KitAPI.kits.add(p.getName());
-                    KitAPI.switcher.add(sender.getName());
-                    p.getInventory().clear();
-                    p.getInventory().setHelmet(new ItemStack(Material.REDSTONE_BLOCK));
-                }
-            else {
-                p.sendMessage("§cVoce ja contem um kit!");
-            }
-            return true;
-        }
-        return false;
-    }
-    
-    @SuppressWarnings("deprecation")
+public class sSwitcher implements Listener, CommandExecutor {
+
+	public boolean onCommand(final CommandSender sender, final Command cmd, final String commandLabel,
+			final String[] args) {
+		final Player p = (Player) sender;
+		if (commandLabel.equalsIgnoreCase("sswitcher")) {
+			if (!KitAPI.kits.contains(p.getName())) {
+				if (!EventosAPI.playerPlayingHG(p)) {
+					return true;
+				}
+				p.sendMessage("§aVocê pegou o kit §fSwitcher");
+				p.playSound(p.getLocation(), Sound.LEVEL_UP, 4.0f, 4.0f);
+				KitAPI.kits.add(p.getName());
+				KitAPI.switcher.add(sender.getName());
+				p.getInventory().clear();
+				p.getInventory().setHelmet(new ItemStack(Material.REDSTONE_BLOCK));
+			} else {
+				p.sendMessage("§cVoce ja contem um kit!");
+			}
+			return true;
+		}
+		return false;
+	}
+
 	@EventHandler
-    public void snowball(final EntityDamageByEntityEvent e) {
-        if (e.getDamager() instanceof Snowball && e.getEntity() instanceof Player) {
-            if (!EventosAPI.playerPlayingHG((Player) e.getEntity())) {
-                return;
-            }
-            final Snowball s = (Snowball)e.getDamager();
-            if (s.getShooter() instanceof Player) {
-                final Player shooter = (Player)s.getShooter();
-                final Location shooterLoc = shooter.getLocation();
-                shooter.teleport(e.getEntity().getLocation());
-                e.getEntity().teleport(shooterLoc);
-            }
-        }
-    }
+	public void snowball(final EntityDamageByEntityEvent e) {
+		if (e.getDamager() instanceof Snowball && e.getEntity() instanceof Player) {
+			if (!EventosAPI.playerPlayingHG((Player) e.getEntity())) {
+				return;
+			}
+			final Snowball s = (Snowball) e.getDamager();
+			if (s.getShooter() instanceof Player) {
+				final Player shooter = (Player) s.getShooter();
+				final Location shooterLoc = shooter.getLocation();
+				shooter.teleport(e.getEntity().getLocation());
+				e.getEntity().teleport(shooterLoc);
+			}
+		}
+	}
 
 }

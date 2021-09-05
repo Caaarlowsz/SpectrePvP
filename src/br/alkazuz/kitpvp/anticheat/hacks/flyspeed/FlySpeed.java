@@ -19,46 +19,46 @@ public class FlySpeed implements Listener {
 	private void onPlayerTeleportEvent(PlayerTeleportEvent Evento) {
 		MoveCheck.Invalidate(Evento.getPlayer(), 4000L);
 	}
-	  
+
 	@EventHandler
 	private void onPlayerPortalEvent(PlayerPortalEvent Evento) {
 		MoveCheck.Invalidate(Evento.getPlayer(), 4000L);
 	}
-	  
+
 	@EventHandler
 	private void onEntityDamageEvent(EntityDamageEvent Evento) {
 		if ((Evento.getEntity() instanceof Player)) {
-			Player player = (Player)Evento.getEntity();
-	      
+			Player player = (Player) Evento.getEntity();
+
 			MoveCheck.Invalidate(player, 1000L);
 		}
 	}
-	  
+
 	@EventHandler
 	private void onEntityDeathEvent(EntityDeathEvent Evento) {
 		if ((Evento instanceof PlayerDeathEvent)) {
-			MoveCheck.Invalidate((Player)Evento.getEntity(), 5000L);
+			MoveCheck.Invalidate((Player) Evento.getEntity(), 5000L);
 		}
 	}
-	  
+
 	@EventHandler
 	private void onPlayerLoginEvent(PlayerLoginEvent Evento) {
 		MoveCheck.Invalidate(Evento.getPlayer(), 5000L);
 	}
-	  
+
 	@EventHandler
 	private void onPlayerRespawnEvent(PlayerRespawnEvent Evento) {
 		MoveCheck.Invalidate(Evento.getPlayer(), 5000L);
 	}
-	  
+
 	@EventHandler
 	private void onPlayerMoveEvent(PlayerMoveEvent Evento) {
 		MoveCheck.AddMove(Evento.getPlayer(), Evento.getTo());
 	}
-	  
+
 	@EventHandler
 	private void onPlayerVelocityEvent(PlayerVelocityEvent Evento) {
-		int Velocidade = (int)Evento.getVelocity().length();
+		int Velocidade = (int) Evento.getVelocity().length();
 		MoveCheck.Invalidate(Evento.getPlayer(), Velocidade * 1000L + 500L);
 	}
 }

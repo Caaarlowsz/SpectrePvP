@@ -22,34 +22,34 @@ import br.alkazuz.kitpvp.anticheat.Utills.Hack;
 public class AutoSoup implements Listener {
 
 	private static HashMap<UUID, Long> JogadorSendoAtacado = new HashMap<UUID, Long>();
-	
-	@SuppressWarnings("deprecation")
+
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onSoup(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
 		Damageable hp = p;
 		if (hp.getHealth() != 20.0D) {
 			int sopa = 7;
-	        if (((e.getAction() == Action.RIGHT_CLICK_AIR) || (e.getAction() == Action.RIGHT_CLICK_BLOCK)) && (p.getItemInHand().getTypeId() == 282)) {
-	        	p.setHealth(hp.getHealth() + sopa > hp.getMaxHealth() ? hp.getMaxHealth() : hp.getHealth() + sopa);
-	        	p.getItemInHand().setType(Material.BOWL);
-	        }
+			if (((e.getAction() == Action.RIGHT_CLICK_AIR) || (e.getAction() == Action.RIGHT_CLICK_BLOCK))
+					&& (p.getItemInHand().getTypeId() == 282)) {
+				p.setHealth(hp.getHealth() + sopa > hp.getMaxHealth() ? hp.getMaxHealth() : hp.getHealth() + sopa);
+				p.getItemInHand().setType(Material.BOWL);
+			}
 		}
 	}
-	  
+
 	@EventHandler
 	private void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
 		if (!(event.getDamager() instanceof Player)) {
 			return;
 		}
-	    Player player = (Player)event.getDamager();
-	    SetarAtacandoTempo(player.getUniqueId());
+		Player player = (Player) event.getDamager();
+		SetarAtacandoTempo(player.getUniqueId());
 	}
-	
+
 	@EventHandler
 	public void onInventoryInteract(InventoryClickEvent Evento) {
-		
-		Player Jogador = (Player)Evento.getWhoClicked();
+
+		Player Jogador = (Player) Evento.getWhoClicked();
 		if (!(Evento.getWhoClicked() instanceof Player)) {
 			return;
 		}
@@ -82,39 +82,40 @@ public class AutoSoup implements Listener {
 		Utills.Hack AutoSoupProvavelmente = Hack.AUTOSOUPPROVAVELMENTE;
 		Utills.Hack AutoSoupDefinitivamente = Hack.AUTOSOUPDEFINITIVAMENTE;
 		if (Tempo < 30L) {
-			Utills.AutoSoup = AutoSoupTalvez.getMenssagem().replace("nick", Jogador.getDisplayName()).replace("avisos", Utills.AvisosAutoSoup.get(Jogador) + "");
+			Utills.AutoSoup = AutoSoupTalvez.getMenssagem().replace("nick", Jogador.getDisplayName()).replace("avisos",
+					Utills.AvisosAutoSoup.get(Jogador) + "");
 			if (Utills.AutoSoup != null) {
 				Utills.AvisosAutoSoup.put(Jogador, Integer.valueOf(Utills.AvisosAutoSoup.get(Jogador) + 1));
 				Utills.sendAntiCheat(Utills.AutoSoup);
 			}
 			Utills.AutoSoup = null;
-		} 
-		else if (Tempo < 60L) {
-			Utills.AutoSoup = AutoSoupProvavelmente.getMenssagem().replace("nick", Jogador.getDisplayName()).replace("avisos", Utills.AvisosAutoSoup.get(Jogador) + "");
+		} else if (Tempo < 60L) {
+			Utills.AutoSoup = AutoSoupProvavelmente.getMenssagem().replace("nick", Jogador.getDisplayName())
+					.replace("avisos", Utills.AvisosAutoSoup.get(Jogador) + "");
 			if (Utills.AutoSoup != null) {
 				Utills.AvisosAutoSoup.put(Jogador, Integer.valueOf(Utills.AvisosAutoSoup.get(Jogador) + 1));
 				Utills.sendAntiCheat(Utills.AutoSoup);
 			}
 			Utills.AutoSoup = null;
-		} 
-		else if (Tempo < 99L) {
-			Utills.AutoSoup = AutoSoupDefinitivamente.getMenssagem().replace("nick", Jogador.getDisplayName()).replace("avisos", Utills.AvisosAutoSoup.get(Jogador) + "");
+		} else if (Tempo < 99L) {
+			Utills.AutoSoup = AutoSoupDefinitivamente.getMenssagem().replace("nick", Jogador.getDisplayName())
+					.replace("avisos", Utills.AvisosAutoSoup.get(Jogador) + "");
 			if (Utills.AutoSoup != null) {
 				Utills.AvisosAutoSoup.put(Jogador, Integer.valueOf(Utills.AvisosAutoSoup.get(Jogador) + 1));
 				Utills.sendAntiCheat(Utills.AutoSoup);
 			}
 			Utills.AutoSoup = null;
-		}  
+		}
 	}
-	  
+
 	public static long PegarAtacandoTempo(UUID uuid) {
 		if (!JogadorSendoAtacado.containsKey(uuid)) {
 			JogadorSendoAtacado.put(uuid, Long.valueOf(System.currentTimeMillis() / 1000L));
-	    }
-		return ((Long)JogadorSendoAtacado.get(uuid)).longValue();
+		}
+		return ((Long) JogadorSendoAtacado.get(uuid)).longValue();
 	}
-	  
+
 	public static void SetarAtacandoTempo(UUID uuid) {
-	    JogadorSendoAtacado.put(uuid, Long.valueOf(System.currentTimeMillis()));
+		JogadorSendoAtacado.put(uuid, Long.valueOf(System.currentTimeMillis()));
 	}
 }

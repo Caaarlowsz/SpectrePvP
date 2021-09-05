@@ -14,36 +14,31 @@ import org.bukkit.inventory.ItemStack;
 import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
 
+public class Switcher extends Kit implements Listener {
 
-public class Switcher extends Kit implements Listener{
-	
 	public Switcher() {
-		//super("Switcher", new String[] {" ","§7Teleporte até algum usando uma bola de neve"},new ItemStack(Material.SNOW_BALL), "kit.Switcher",KitType.BASIC);
-		super("Switcher", 2000, false, new ItemStack(Material.SNOW_BALL,16), true, "kit.switcher", true, new String[] {" "," §e§l- §7Teleporte alguém usando uma bola de neve"});
+		// super("Switcher", new String[] {" ","§7Teleporte até algum usando uma bola de
+		// neve"},new ItemStack(Material.SNOW_BALL), "kit.Switcher",KitType.BASIC);
+		super("Switcher", 2000, false, new ItemStack(Material.SNOW_BALL, 16), true, "kit.switcher", true,
+				new String[] { " ", " §e§l- §7Teleporte alguém usando uma bola de neve" });
 	}
-	
-	
-	@SuppressWarnings("deprecation")
-	  @EventHandler
-	    public void snowball(EntityDamageByEntityEvent e) {
-	      if (((e.getDamager() instanceof Snowball)) && 
-	        ((e.getEntity() instanceof Player)))
-	      {
-	        Snowball s = (Snowball)e.getDamager();
-	        if ((s.getShooter() instanceof Player))
-	        {
-	          Player shooter = (Player)s.getShooter();
-	          if (KitAPI.getKitName(shooter) == "Switcher")
-	          {
-	            Location shooterLoc = shooter.getLocation();
-	            shooter.teleport(e.getEntity().getLocation());
-	            e.getEntity().teleport(shooterLoc);
-	            shooter.getPlayer().getWorld().playEffect(shooterLoc, Effect.ENDER_SIGNAL, 10);
-	            shooter.getPlayer().getWorld().playEffect(shooterLoc, Effect.EXTINGUISH, 10);
-	            shooter.getWorld().playSound(shooter.getLocation(), Sound.ENDERMAN_TELEPORT, 1.0F, 1.2F);
-	          }
-	        }
-	      }
-	  }
+
+	@EventHandler
+	public void snowball(EntityDamageByEntityEvent e) {
+		if (((e.getDamager() instanceof Snowball)) && ((e.getEntity() instanceof Player))) {
+			Snowball s = (Snowball) e.getDamager();
+			if ((s.getShooter() instanceof Player)) {
+				Player shooter = (Player) s.getShooter();
+				if (KitAPI.getKitName(shooter) == "Switcher") {
+					Location shooterLoc = shooter.getLocation();
+					shooter.teleport(e.getEntity().getLocation());
+					e.getEntity().teleport(shooterLoc);
+					shooter.getPlayer().getWorld().playEffect(shooterLoc, Effect.ENDER_SIGNAL, 10);
+					shooter.getPlayer().getWorld().playEffect(shooterLoc, Effect.EXTINGUISH, 10);
+					shooter.getWorld().playSound(shooter.getLocation(), Sound.ENDERMAN_TELEPORT, 1.0F, 1.2F);
+				}
+			}
+		}
+	}
 
 }
