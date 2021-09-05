@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/Alkazuz/Documents/Minecraft/Spigot/PaperSpigot.jar" sourcepath="C:/Users/IZ44KPvP/Desktop/Coisas Desenvolvimento/BukkitAPI/Spigot-1649.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alkazuz/Documents/Minecraft/Spigot/plugins/ProtocolLib.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alkazuz/Documents/Minecraft/Spigot/plugins/TagAPI.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alkazuz/Documents/Minecraft/Spigot/plugins/SpartanAntiBot.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alkazuz/Documents/Minecraft/sac/plugins/GroupAPI.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alkazuz/Documents/Minecraft/sac/plugins/MinePag.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alkazuz/Documents/Minecraft/sac/plugins/NametagEdit.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
