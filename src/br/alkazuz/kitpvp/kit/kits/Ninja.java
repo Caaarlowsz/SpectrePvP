@@ -15,7 +15,7 @@ import br.alkazuz.kitpvp.api.MessageAPI;
 import br.alkazuz.kitpvp.cooldown.CooldownAPI;
 import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class Ninja extends Kit implements Listener {
 
@@ -28,7 +28,7 @@ public class Ninja extends Kit implements Listener {
 
 	public static HashMap<Player, Player> a = new HashMap<Player, Player>();
 	public static HashMap<Player, Long> b = new HashMap<Player, Long>();
-	public static Main plugin;
+	public static SpectrePvP plugin;
 
 	@EventHandler
 	public void a(EntityDamageByEntityEvent paramEntityDamageByEntityEvent) {
