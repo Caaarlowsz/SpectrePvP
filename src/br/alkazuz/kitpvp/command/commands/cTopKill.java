@@ -4,7 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class cTopKill implements CommandExecutor {
 
@@ -14,10 +14,10 @@ public class cTopKill implements CommandExecutor {
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (cmd.getName().equalsIgnoreCase("topkill")) {
-			sender.sendMessage("     §c§lTOP 10 JOGADORES");
-			for (String jogadores : Main.topkill) {
+			sender.sendMessage("     ï¿½cï¿½lTOP 10 JOGADORES");
+			for (String jogadores : SpectrePvP.topkill) {
 
-				sender.sendMessage("§c" + jogadores + "");
+				sender.sendMessage("ï¿½c" + jogadores + "");
 			}
 			return true;
 		}

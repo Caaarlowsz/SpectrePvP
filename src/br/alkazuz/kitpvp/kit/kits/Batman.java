@@ -17,18 +17,18 @@ import br.alkazuz.kitpvp.api.MessageAPI;
 import br.alkazuz.kitpvp.cooldown.CooldownAPI;
 import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class Batman extends Kit implements Listener {
 
 	public Batman() {
 		/*
-		 * super("Batman", new String[] {" ","§7Atrapalhe seus inimigos com Morcegos"},
+		 * super("Batman", new String[] {" ","ï¿½7Atrapalhe seus inimigos com Morcegos"},
 		 * new ItemStack(Material.MONSTER_EGG, 1, (short)EntityType.BAT.ordinal()),
 		 * "kit.batman",KitType.BASIC);
 		 */
 		super("Batman", 1000, false, new ItemStack(Material.MONSTER_EGG, 1, (short) EntityType.BAT.ordinal()), true,
-				"kit.batman", true, new String[] { " ", " §e§l- §7Atrapalhe seus inimigos com Morcegos" });
+				"kit.batman", true, new String[] { " ", " ï¿½eï¿½l- ï¿½7Atrapalhe seus inimigos com Morcegos" });
 	}
 
 	@EventHandler
@@ -38,7 +38,7 @@ public class Batman extends Kit implements Listener {
 			if (jogador.getItemInHand().getType().equals(Material.MONSTER_EGG)) {
 				if ((evento.getRightClicked() instanceof Player)) {
 					if (CooldownAPI.Cooldown.containsKey(jogador.getName())) {
-						jogador.sendMessage(MessageAPI.Command_Error + "Você está com um Cooldown de §e"
+						jogador.sendMessage(MessageAPI.Command_Error + "Vocï¿½ estï¿½ com um Cooldown de ï¿½e"
 								+ CooldownAPI.Cooldown(jogador) + "s");
 						return;
 					}
@@ -94,7 +94,7 @@ public class Batman extends Kit implements Listener {
 					}
 					jogador.getWorld().playSound(jogador.getLocation(), Sound.BAT_HURT, 5.0F, 5.0F);
 
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.plugin, new Runnable() {
 						public void run() {
 							jogador.getWorld().createExplosion(bat1.getLocation(), 2.0F);
 							jogador.getWorld().createExplosion(bat2.getLocation(), 2.0F);

@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.protection.Protection;
 
 public class sTempoInvencible {
@@ -32,7 +32,7 @@ public class sTempoInvencible {
 	}
 
 	private void mandarAvisos() {
-		mandarBroadcast(ChatColor.GREEN + "Invencibilidade acaba em §e" + FormatoTempo(Iniciando));
+		mandarBroadcast(ChatColor.GREEN + "Invencibilidade acaba em ï¿½e" + FormatoTempo(Iniciando));
 		for (Player Jogadores : Bukkit.getOnlinePlayers()) {
 			if (EventosAPI.playerPlayingHG(Jogadores)) {
 				Jogadores.playSound(Jogadores.getLocation(), Sound.CLICK, 10.0F, 10.0F);
@@ -93,8 +93,8 @@ public class sTempoInvencible {
 	}
 
 	public sTempoInvencible() {
-		if (Main.EstadoHG == EstadoHG.INICIANDO) {
-			Tempo = Integer.valueOf(Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Runnable() {
+		if (SpectrePvP.EstadoHG == EstadoHG.INICIANDO) {
+			Tempo = Integer.valueOf(Bukkit.getScheduler().scheduleSyncRepeatingTask(SpectrePvP.getPlugin(), new Runnable() {
 
 				public void run() {
 					Iniciando -= 1;
@@ -104,21 +104,21 @@ public class sTempoInvencible {
 								if (KitAPI.kangaroo.contains(p.getName())) {
 									final ItemStack grappl = new ItemStack(Material.FIREWORK);
 									final ItemMeta grap = grappl.getItemMeta();
-									grap.setDisplayName("§eKangaroo");
+									grap.setDisplayName("ï¿½eKangaroo");
 									grappl.setItemMeta(grap);
 									p.getInventory().addItem(new ItemStack[] { grappl });
 								}
 								if (KitAPI.monk.contains(p.getName())) {
 									final ItemStack grappl = new ItemStack(Material.BLAZE_ROD);
 									final ItemMeta grap = grappl.getItemMeta();
-									grap.setDisplayName("§6Monk");
+									grap.setDisplayName("ï¿½6Monk");
 									grappl.setItemMeta(grap);
 									p.getInventory().addItem(new ItemStack[] { grappl });
 								}
 								if (KitAPI.switcher.contains(p.getName())) {
 									final ItemStack grappl = new ItemStack(Material.SNOW_BALL);
 									final ItemMeta grap = grappl.getItemMeta();
-									grap.setDisplayName("§5Switcher SnowBall");
+									grap.setDisplayName("ï¿½5Switcher SnowBall");
 									grappl.setItemMeta(grap);
 									grappl.setAmount(6);
 									p.getInventory().addItem(new ItemStack[] { grappl });
@@ -155,10 +155,10 @@ public class sTempoInvencible {
 						for (Player players : Bukkit.getOnlinePlayers()) {
 							if (EventosAPI.playerPlayingHG(players)) {
 								Protection.setImortal(players, false);
-								players.sendMessage("§cInvencibilidade acabou, boa sorte à todos");
+								players.sendMessage("ï¿½cInvencibilidade acabou, boa sorte ï¿½ todos");
 							}
 						}
-						Main.EstadoHG = EstadoHG.ANDAMENTO;
+						SpectrePvP.EstadoHG = EstadoHG.ANDAMENTO;
 						CancelarTempo();
 						Iniciando = 121;
 						new sTempoAcabar();

@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.simulador.EstadoHG;
 import br.alkazuz.kitpvp.simulador.EventosAPI;
 import br.alkazuz.kitpvp.simulador.KitAPI;
@@ -30,19 +30,19 @@ public class sMonk implements Listener, CommandExecutor {
 				if (!EventosAPI.playerPlayingHG(p)) {
 					return true;
 				}
-				p.sendMessage("§aVocê pegou o kit §fMonk");
+				p.sendMessage("ï¿½aVocï¿½ pegou o kit ï¿½fMonk");
 				p.playSound(p.getLocation(), Sound.LEVEL_UP, 4.0f, 4.0f);
 				KitAPI.kits.add(p.getName());
 				KitAPI.monk.add(p.getName());
 				p.getInventory().clear();
 				final ItemStack grappl = new ItemStack(Material.BLAZE_ROD);
 				final ItemMeta grap = grappl.getItemMeta();
-				grap.setDisplayName("§6Monk");
+				grap.setDisplayName("ï¿½6Monk");
 				grappl.setItemMeta(grap);
 			}
 
 			else {
-				p.sendMessage("§cVoce ja contem um kit!");
+				p.sendMessage("ï¿½cVoce ja contem um kit!");
 			}
 			return true;
 		}
@@ -54,7 +54,7 @@ public class sMonk implements Listener, CommandExecutor {
 		if (!EventosAPI.playerPlayingHG(event.getPlayer())) {
 			return;
 		}
-		if (Main.EstadoHG != EstadoHG.ANDAMENTO)
+		if (SpectrePvP.EstadoHG != EstadoHG.ANDAMENTO)
 			return;
 		final ItemStack item = event.getPlayer().getItemInHand();
 		if (KitAPI.monk.contains(event.getPlayer().getName()) && event.getRightClicked() instanceof Player
@@ -64,7 +64,7 @@ public class sMonk implements Listener, CommandExecutor {
 				lastUsed = KitAPI.monkStaff.get(item);
 			}
 			if (lastUsed + 1000 * KitAPI.cooldownmonk > System.currentTimeMillis()) {
-				event.getPlayer().sendMessage(String.format("§cVoce pode monkar denovo em %s segundos!",
+				event.getPlayer().sendMessage(String.format("ï¿½cVoce pode monkar denovo em %s segundos!",
 						-((System.currentTimeMillis() - (lastUsed + 1000 * 15)) / 1000L)));
 			} else {
 				final PlayerInventory inv = ((Player) event.getRightClicked()).getInventory();
@@ -80,7 +80,7 @@ public class sMonk implements Listener, CommandExecutor {
 				inv.setItemInHand(replacer);
 				inv.setItem(slot, replaced);
 				KitAPI.monkStaff.put(item, System.currentTimeMillis());
-				event.getPlayer().sendMessage("§1Monkado!");
+				event.getPlayer().sendMessage("ï¿½1Monkado!");
 			}
 		}
 	}

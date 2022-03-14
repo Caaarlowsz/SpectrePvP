@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 
 import br.alkazuz.kitpvp.command.commands.cTopKill;
 import br.alkazuz.kitpvp.logs.LogManager;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.mysql.connection.Data;
 import br.alkazuz.kitpvp.mysql.connection.kMySQL;
 
@@ -202,7 +202,7 @@ public class MySQLFunctions {
 					continue;
 				if (list.size() >= 10)
 					break;
-				list.add("§f" + index + ". §7Jogador: §f" + rs.getString("NICK") + " §7Kills: §3" + rs.getInt("Kills"));
+				list.add("ï¿½f" + index + ". ï¿½7Jogador: ï¿½f" + rs.getString("NICK") + " ï¿½7Kills: ï¿½3" + rs.getInt("Kills"));
 				index++;
 				list2.add(rs.getString("NICK"));
 			}
@@ -214,7 +214,7 @@ public class MySQLFunctions {
 			cTopKill.Top2 = list2.get(1);
 			cTopKill.Top3 = list2.get(2);
 		}
-		Main.topkill = list;
+		SpectrePvP.topkill = list;
 		return list;
 	}
 

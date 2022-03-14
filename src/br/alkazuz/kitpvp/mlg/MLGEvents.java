@@ -17,7 +17,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import br.alkazuz.kitpvp.api.MessageAPI;
 import br.alkazuz.kitpvp.api.WarpAPI;
 import br.alkazuz.kitpvp.config.WarpConfig;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.score.ScoreBoarding;
 
 public class MLGEvents implements Listener {
@@ -32,7 +32,7 @@ public class MLGEvents implements Listener {
 				if (e.getCause() == EntityDamageEvent.DamageCause.FALL) {
 					if (acertou.contains(p))
 						return;
-					p.sendMessage(MessageAPI.Command_Error + "Você errou o MLG");
+					p.sendMessage(MessageAPI.Command_Error + "Vocï¿½ errou o MLG");
 					MLGAPI.addErros(p);
 					MLGAPI.clearKs(p);
 					ScoreBoarding.setScoreBoard(p);
@@ -65,13 +65,13 @@ public class MLGEvents implements Listener {
 				&& e.getPlayer().getLocation().getY() + 2 < WarpConfig.getConfig().getInt("Warps.MLG.Y")
 				&& (int) p.getLocation().getY() != (int) y) {
 			if (p.getLocation().subtract(0.0, 3.0, 0.0).getBlock().getType() != Material.AIR) {
-				e.getPlayer().sendMessage(MessageAPI.Command_Succes + "Você acertou o MLG");
+				e.getPlayer().sendMessage(MessageAPI.Command_Succes + "Vocï¿½ acertou o MLG");
 				WarpAPI.setWarp(e.getPlayer(), "MLG");
 				MLGAPI.addAcertos(p);
 				MLGAPI.addKs(p, 1);
 				ScoreBoarding.setScoreBoard(p);
 				acertou.add(p);
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 					public void run() {
 						acertou.remove(p);
 					}

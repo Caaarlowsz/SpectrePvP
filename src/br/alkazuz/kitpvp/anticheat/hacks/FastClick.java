@@ -8,7 +8,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import br.alkazuz.kitpvp.anticheat.Utills;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class FastClick implements Listener {
 
@@ -43,12 +43,12 @@ public class FastClick implements Listener {
 				Utills.ClicksFastClicks.remove(Jogador);
 				Utills.FastAttackClicks.remove(Jogador);
 			}
-		}.runTaskLater(Main.getPlugin(), 20L);
+		}.runTaskLater(SpectrePvP.getPlugin(), 20L);
 		if (((Integer) Utills.FastAttackClicks.get(Jogador)).intValue() >= 50) {
 			Utills.FastAttack = FastClickTalvez.getMenssagem().replace("nick", Jogador.getDisplayName().toString())
 					.replace("avisos", Utills.AvisosFastClick.get(Jogador) + "")
 					.replace("clicks", Utills.ClicksFastClicks.get(Jogador) + "");
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 					if (Utills.FastAttackClicks.containsKey(Jogador)) {
 						Utills.FastAttackClicks.remove(Jogador);
@@ -68,7 +68,7 @@ public class FastClick implements Listener {
 			Utills.FastAttack = FastClickProvelmente.getMenssagem().replace("nick", Jogador.getDisplayName().toString())
 					.replace("avisos", Utills.AvisosFastClick.get(Jogador) + "")
 					.replace("clicks", Utills.ClicksFastClicks.get(Jogador) + "");
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 					if (Utills.FastAttackClicks.containsKey(Jogador)) {
 						Utills.FastAttackClicks.remove(Jogador);
@@ -89,7 +89,7 @@ public class FastClick implements Listener {
 					.replace("nick", Jogador.getDisplayName().toString())
 					.replace("avisos", Utills.AvisosFastClick.get(Jogador) + "")
 					.replace("clicks", Utills.ClicksFastClicks.get(Jogador) + "");
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 					if (Utills.FastAttackClicks.containsKey(Jogador)) {
 						Utills.FastAttackClicks.remove(Jogador);

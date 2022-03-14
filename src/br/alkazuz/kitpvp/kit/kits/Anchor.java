@@ -14,7 +14,7 @@ import org.bukkit.util.Vector;
 
 import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class Anchor extends Kit implements Listener {
 
@@ -41,7 +41,7 @@ public class Anchor extends Kit implements Listener {
 		if (KitAPI.getKitName(p).equalsIgnoreCase("Anchor")) {
 			p.setVelocity(new Vector());
 			p.playSound(p.getLocation(), Sound.ANVIL_BREAK, 4.0f, 4.0f);
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask((Plugin) Main.getPlugin(),
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask((Plugin) SpectrePvP.getPlugin(),
 					(Runnable) new Runnable() {
 						@Override
 						public void run() {
@@ -52,7 +52,7 @@ public class Anchor extends Kit implements Listener {
 		if (KitAPI.getKitName(a).equalsIgnoreCase("Anchor")) {
 			a.playSound(a.getLocation(), Sound.ANVIL_BREAK, 4.0f, 4.0f);
 			p.setVelocity(new Vector());
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask((Plugin) Main.getPlugin(),
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask((Plugin) SpectrePvP.getPlugin(),
 					(Runnable) new Runnable() {
 						@Override
 						public void run() {

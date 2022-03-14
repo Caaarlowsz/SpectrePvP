@@ -9,7 +9,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import br.alkazuz.kitpvp.api.API;
 import br.alkazuz.kitpvp.api.WarpAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class sTempoIniciar {
 
@@ -59,10 +59,10 @@ public class sTempoIniciar {
 
 	private void mandarAvisos() {
 		// mandarBroadcast(ChatColor.DARK_RED + ChatColor.BOLD.toString() + "RDM: " +
-		// ChatColor.GRAY + "O Evento Começa em" + ChatColor.RED +
+		// ChatColor.GRAY + "O Evento Comeï¿½a em" + ChatColor.RED +
 		// FormatoTempo(Iniciando) + ChatColor.GRAY + ", Temos " + ChatColor.WHITE + "("
 		// + PlayerAPI.Participando.size() + "/30)" + ChatColor.GRAY + " Jogadores!");
-		mandarBroadcast(ChatColor.GOLD + "Partida começa em §c" + FormatoTempo(Iniciando));
+		mandarBroadcast(ChatColor.GOLD + "Partida comeï¿½a em ï¿½c" + FormatoTempo(Iniciando));
 		for (Player Jogadores : Bukkit.getOnlinePlayers()) {
 			if (EventosAPI.playerPlayingHG(Jogadores)) {
 				Jogadores.playSound(Jogadores.getLocation(), Sound.CLICK, 10.0F, 10.0F);
@@ -97,8 +97,8 @@ public class sTempoIniciar {
 	}
 
 	public sTempoIniciar() {
-		if (Main.EstadoHG == EstadoHG.INICIANDO) {
-			Tempo = Integer.valueOf(Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Runnable() {
+		if (SpectrePvP.EstadoHG == EstadoHG.INICIANDO) {
+			Tempo = Integer.valueOf(Bukkit.getScheduler().scheduleSyncRepeatingTask(SpectrePvP.getPlugin(), new Runnable() {
 
 				public void run() {
 					Iniciando -= 1;
@@ -134,10 +134,10 @@ public class sTempoIniciar {
 							for (Player players : Bukkit.getOnlinePlayers()) {
 								if (EventosAPI.playerPlayingHG(players)) {
 									players.sendMessage(
-											"§cO minigame não pode ser iniciado, pois não há Players suficientes!");
+											"ï¿½cO minigame nï¿½o pode ser iniciado, pois nï¿½o hï¿½ Players suficientes!");
 									Iniciando = 61;
 									CancelarTempo();
-									players.sendMessage("§cO tempo foi alterado para §e1 minuto(s)");
+									players.sendMessage("ï¿½cO tempo foi alterado para ï¿½e1 minuto(s)");
 									new sTempoIniciar();
 								}
 							}
@@ -152,7 +152,7 @@ public class sTempoIniciar {
 									for (Player p : Bukkit.getOnlinePlayers()) {
 										if (!EventosAPI.playerPlayingHG(p))
 											continue;
-										p.getInventory().setItem(8, API.createItem(p, Material.COMPASS, "§eBussola",
+										p.getInventory().setItem(8, API.createItem(p, Material.COMPASS, "ï¿½eBussola",
 												new String[] { "" }, 1, (short) 0));
 									}
 								}
@@ -160,7 +160,7 @@ public class sTempoIniciar {
 							CancelarTempo();
 							Iniciando = 121;
 							new sTempoInvencible();
-							Main.EstadoHG = EstadoHG.INVENCIVEL;
+							SpectrePvP.EstadoHG = EstadoHG.INVENCIVEL;
 						}
 					}
 				}

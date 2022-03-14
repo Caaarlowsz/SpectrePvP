@@ -1,6 +1,6 @@
 name: KitPvP
 version: 1.0
-main: br.alkazuz.kitpvp.main.Main
+main: com.github.caaarlowsz.spectremc.kitpvp.Main
 depend: [ProtocolLib]
 author: Alkazuz
 commands:

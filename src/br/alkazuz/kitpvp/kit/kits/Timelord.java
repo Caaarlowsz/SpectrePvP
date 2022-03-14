@@ -18,7 +18,7 @@ import br.alkazuz.kitpvp.api.MessageAPI;
 import br.alkazuz.kitpvp.cooldown.CooldownAPI;
 import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class Timelord extends Kit implements Listener {
 
@@ -55,7 +55,7 @@ public class Timelord extends Kit implements Listener {
 						CooldownAPI.addCooldown(p, 35);
 						p.sendMessage("§7» Você congelou os players envolta de você");
 
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+						Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 							public void run() {
 								frozenPlayers.remove(ta.getName());
 							}

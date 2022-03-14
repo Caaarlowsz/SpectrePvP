@@ -14,7 +14,7 @@ import br.alkazuz.kitpvp.api.API;
 import br.alkazuz.kitpvp.api.NameTagAPI;
 import br.alkazuz.kitpvp.api.VIPAPI;
 import br.alkazuz.kitpvp.api.WarpAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.mysql.manager.Status;
 import br.alkazuz.kitpvp.protection.Protection;
 import br.alkazuz.kitpvp.score.ScoreBoarding;
@@ -31,15 +31,15 @@ public class RdmListener implements Listener {
 							&& (RDMApi.getPlayerTwo() == killer || RDMApi.getPlayerTwo() == killer))) {
 				RDMApi.playing.remove(p);
 				Bukkit.broadcastMessage(" ");
-				Bukkit.broadcastMessage("§4§lRDM §c" + killer.getName() + " §fvenceu a rodada contra §e" + p.getName());
-				Bukkit.broadcastMessage("§4§lRDM §fIniciando a próxima rodada...");
+				Bukkit.broadcastMessage("ï¿½4ï¿½lRDM ï¿½c" + killer.getName() + " ï¿½fvenceu a rodada contra ï¿½e" + p.getName());
+				Bukkit.broadcastMessage("ï¿½4ï¿½lRDM ï¿½fIniciando a prï¿½xima rodada...");
 				Bukkit.broadcastMessage(" ");
 				WarpAPI.setWarp(p, "Spawn");
 				Protection.setImortal(killer, true);
 				if (RDMApi.ChecarGanhador(killer)) {
 					RDMApi.status = RDMStatus.FINALIZANDO;
 					Bukkit.broadcastMessage(" ");
-					Bukkit.broadcastMessage("§4§lRDM §c" + killer.getName() + " §fvenceu o Evento RDM!!");
+					Bukkit.broadcastMessage("ï¿½4ï¿½lRDM ï¿½c" + killer.getName() + " ï¿½fvenceu o Evento RDM!!");
 					Bukkit.broadcastMessage(" ");
 					boolean melhor = false;
 					if (GroupAPI.getGroup(p) == "Youtuber" || GroupAPI.getGroup(p) == "Youtuber+") {
@@ -47,7 +47,7 @@ public class RdmListener implements Listener {
 					}
 					if (melhor) {
 						killer.sendMessage(
-								"§4§lRDM §eSeu Grupo é melhor que o Grupo §6§lPRO§e, seu prêmio será 5k de coins");
+								"ï¿½4ï¿½lRDM ï¿½eSeu Grupo ï¿½ melhor que o Grupo ï¿½6ï¿½lPROï¿½e, seu prï¿½mio serï¿½ 5k de coins");
 						Status.addCoins(p, 5000);
 
 					} else {
@@ -59,31 +59,31 @@ public class RdmListener implements Listener {
 						NameTagAPI.setupTag(killer);
 					}
 					ScoreBoarding.setScoreBoard(killer);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							killer.sendMessage(
-									"§4§lRDM §aVocê venceu o Evento, mais um dia de §6§lPRO §afoi adicionado em sua conta.");
+									"ï¿½4ï¿½lRDM ï¿½aVocï¿½ venceu o Evento, mais um dia de ï¿½6ï¿½lPRO ï¿½afoi adicionado em sua conta.");
 						}
 					}, 20L);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							killer.sendMessage(
-									"§4§lRDM §aVocê venceu o Evento, mais um dia de §6§lPRO §afoi adicionado em sua conta.");
+									"ï¿½4ï¿½lRDM ï¿½aVocï¿½ venceu o Evento, mais um dia de ï¿½6ï¿½lPRO ï¿½afoi adicionado em sua conta.");
 						}
 					}, 40L);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							killer.sendMessage(
-									"§4§lRDM §aVocê venceu o Evento, mais um dia de §6§lPRO §afoi adicionado em sua conta.");
+									"ï¿½4ï¿½lRDM ï¿½aVocï¿½ venceu o Evento, mais um dia de ï¿½6ï¿½lPRO ï¿½afoi adicionado em sua conta.");
 						}
 					}, 60L);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							killer.sendMessage(
-									"§4§lRDM §aVocê venceu o Evento, mais um dia de §6§lPRO §afoi adicionado em sua conta.");
+									"ï¿½4ï¿½lRDM ï¿½aVocï¿½ venceu o Evento, mais um dia de ï¿½6ï¿½lPRO ï¿½afoi adicionado em sua conta.");
 						}
 					}, 80L);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 
 							RDMApi.playing.clear();
@@ -99,18 +99,18 @@ public class RdmListener implements Listener {
 					if (p == RDMApi.getPlayerTwo()) {
 						RDMApi.player2 = null;
 					}
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							RDMApi.proximaRodada();
 							Bukkit.broadcastMessage(" ");
-							Bukkit.broadcastMessage("§4§lRDM §fRodada iniciada...");
+							Bukkit.broadcastMessage("ï¿½4ï¿½lRDM ï¿½fRodada iniciada...");
 							Bukkit.broadcastMessage(
-									"§4§lRDM §c" + RDMApi.player1.getName() + " §fvs §c" + RDMApi.player2.getName());
+									"ï¿½4ï¿½lRDM ï¿½c" + RDMApi.player1.getName() + " ï¿½fvs ï¿½c" + RDMApi.player2.getName());
 							Bukkit.broadcastMessage(" ");
 						}
 					}, 20L * 10L);
 				}
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 					public void run() {
 						p.spigot().respawn();
 						API.sendItems(p);
@@ -141,7 +141,7 @@ public class RdmListener implements Listener {
 				if (RDMApi.ChecarGanhador(killer)) {
 					RDMApi.status = RDMStatus.FINALIZANDO;
 					Bukkit.broadcastMessage(" ");
-					Bukkit.broadcastMessage("§4§lRDM §c" + killer.getName() + " §fvenceu o Evento RDM!!");
+					Bukkit.broadcastMessage("ï¿½4ï¿½lRDM ï¿½c" + killer.getName() + " ï¿½fvenceu o Evento RDM!!");
 					Bukkit.broadcastMessage(" ");
 					boolean melhor = false;
 					if (GroupAPI.getGroup(p) == "Youtuber" || GroupAPI.getGroup(p) == "Youtuber+") {
@@ -149,7 +149,7 @@ public class RdmListener implements Listener {
 					}
 					if (melhor) {
 						killer.sendMessage(
-								"§4§lRDM §eSeu Grupo é melhor que o Grupo §6§lPRO§e, seu prêmio será 5k de coins");
+								"ï¿½4ï¿½lRDM ï¿½eSeu Grupo ï¿½ melhor que o Grupo ï¿½6ï¿½lPROï¿½e, seu prï¿½mio serï¿½ 5k de coins");
 						Status.addCoins(p, 5000);
 
 					} else {
@@ -161,31 +161,31 @@ public class RdmListener implements Listener {
 						NameTagAPI.setupTag(killer);
 					}
 					ScoreBoarding.setScoreBoard(killer);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							killer.sendMessage(
-									"§4§lRDM §aVocê venceu o Evento, mais um dia de §6§lPRO §afoi adicionado em sua conta.");
+									"ï¿½4ï¿½lRDM ï¿½aVocï¿½ venceu o Evento, mais um dia de ï¿½6ï¿½lPRO ï¿½afoi adicionado em sua conta.");
 						}
 					}, 20L);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							killer.sendMessage(
-									"§4§lRDM §aVocê venceu o Evento, mais um dia de §6§lPRO §afoi adicionado em sua conta.");
+									"ï¿½4ï¿½lRDM ï¿½aVocï¿½ venceu o Evento, mais um dia de ï¿½6ï¿½lPRO ï¿½afoi adicionado em sua conta.");
 						}
 					}, 40L);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							killer.sendMessage(
-									"§4§lRDM §aVocê venceu o Evento, mais um dia de §6§lPRO §afoi adicionado em sua conta.");
+									"ï¿½4ï¿½lRDM ï¿½aVocï¿½ venceu o Evento, mais um dia de ï¿½6ï¿½lPRO ï¿½afoi adicionado em sua conta.");
 						}
 					}, 60L);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							killer.sendMessage(
-									"§4§lRDM §aVocê venceu o Evento, mais um dia de §6§lPRO §afoi adicionado em sua conta.");
+									"ï¿½4ï¿½lRDM ï¿½aVocï¿½ venceu o Evento, mais um dia de ï¿½6ï¿½lPRO ï¿½afoi adicionado em sua conta.");
 						}
 					}, 80L);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 
 							RDMApi.playing.clear();
@@ -219,7 +219,7 @@ public class RdmListener implements Listener {
 				if (RDMApi.ChecarGanhador(killer)) {
 					RDMApi.status = RDMStatus.FINALIZANDO;
 					Bukkit.broadcastMessage(" ");
-					Bukkit.broadcastMessage("§4§lRDM §c" + killer.getName() + " §fvenceu o Evento RDM!!");
+					Bukkit.broadcastMessage("ï¿½4ï¿½lRDM ï¿½c" + killer.getName() + " ï¿½fvenceu o Evento RDM!!");
 					Bukkit.broadcastMessage(" ");
 					boolean melhor = false;
 					if (GroupAPI.getGroup(p) == "Youtuber" || GroupAPI.getGroup(p) == "Youtuber+") {
@@ -227,7 +227,7 @@ public class RdmListener implements Listener {
 					}
 					if (melhor) {
 						killer.sendMessage(
-								"§4§lRDM §eSeu Grupo é melhor que o Grupo §6§lPRO§e, seu prêmio será 5k de coins");
+								"ï¿½4ï¿½lRDM ï¿½eSeu Grupo ï¿½ melhor que o Grupo ï¿½6ï¿½lPROï¿½e, seu prï¿½mio serï¿½ 5k de coins");
 						Status.addCoins(p, 5000);
 
 					} else {
@@ -239,31 +239,31 @@ public class RdmListener implements Listener {
 						NameTagAPI.setupTag(killer);
 					}
 					ScoreBoarding.setScoreBoard(killer);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							killer.sendMessage(
-									"§4§lRDM §aVocê venceu o Evento, mais um dia de §6§lPRO §afoi adicionado em sua conta.");
+									"ï¿½4ï¿½lRDM ï¿½aVocï¿½ venceu o Evento, mais um dia de ï¿½6ï¿½lPRO ï¿½afoi adicionado em sua conta.");
 						}
 					}, 20L);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							killer.sendMessage(
-									"§4§lRDM §aVocê venceu o Evento, mais um dia de §6§lPRO §afoi adicionado em sua conta.");
+									"ï¿½4ï¿½lRDM ï¿½aVocï¿½ venceu o Evento, mais um dia de ï¿½6ï¿½lPRO ï¿½afoi adicionado em sua conta.");
 						}
 					}, 40L);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							killer.sendMessage(
-									"§4§lRDM §aVocê venceu o Evento, mais um dia de §6§lPRO §afoi adicionado em sua conta.");
+									"ï¿½4ï¿½lRDM ï¿½aVocï¿½ venceu o Evento, mais um dia de ï¿½6ï¿½lPRO ï¿½afoi adicionado em sua conta.");
 						}
 					}, 60L);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							killer.sendMessage(
-									"§4§lRDM §aVocê venceu o Evento, mais um dia de §6§lPRO §afoi adicionado em sua conta.");
+									"ï¿½4ï¿½lRDM ï¿½aVocï¿½ venceu o Evento, mais um dia de ï¿½6ï¿½lPRO ï¿½afoi adicionado em sua conta.");
 						}
 					}, 80L);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 
 							RDMApi.playing.clear();
@@ -283,7 +283,7 @@ public class RdmListener implements Listener {
 		Player p = event.getPlayer();
 		if ((RDMApi.isPlaying(p)) && ((!event.getMessage().toLowerCase().startsWith("/spawn")))) {
 			event.setCancelled(true);
-			p.sendMessage("§4§lRDM §cVocê está no RDM, use §4/spawn §cpara executar comandos");
+			p.sendMessage("ï¿½4ï¿½lRDM ï¿½cVocï¿½ estï¿½ no RDM, use ï¿½4/spawn ï¿½cpara executar comandos");
 		}
 	}
 

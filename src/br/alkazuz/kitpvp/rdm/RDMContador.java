@@ -2,7 +2,7 @@ package br.alkazuz.kitpvp.rdm;
 
 import org.bukkit.Bukkit;
 
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.protection.Protection;
 
 public class RDMContador {
@@ -11,7 +11,7 @@ public class RDMContador {
 	public static int Iniciando = 301;
 
 	public RDMContador() {
-		Tempo = Integer.valueOf(Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.plugin, new Runnable() {
+		Tempo = Integer.valueOf(Bukkit.getScheduler().scheduleSyncRepeatingTask(SpectrePvP.plugin, new Runnable() {
 			public void run() {
 				Iniciando -= 1;
 				if (RDMApi.status == RDMStatus.RODANDO) {
@@ -57,17 +57,17 @@ public class RDMContador {
 				if (Iniciando == 0) {
 					if (RDMApi.playing.size() < 10) {
 						Bukkit.broadcastMessage(
-								"§4§lRDM §fO Evento não pode ser iniciado porque não há Jogadores Suficientes");
+								"ï¿½4ï¿½lRDM ï¿½fO Evento nï¿½o pode ser iniciado porque nï¿½o hï¿½ Jogadores Suficientes");
 						RDMContador.Tempo = 121;
 					} else {
 						CancelarTempo();
 						Iniciando = 301;
 						RDMApi.iniciar();
 						Bukkit.broadcastMessage(" ");
-						Bukkit.broadcastMessage("§4§lRDM §fEvento RDM foi iniciado");
+						Bukkit.broadcastMessage("ï¿½4ï¿½lRDM ï¿½fEvento RDM foi iniciado");
 						Bukkit.broadcastMessage(
-								"§4§lRDM §fHá §c" + RDMApi.playing.size() + " §fjogadores Participando");
-						Bukkit.broadcastMessage("§4§lRDM §c" + RDMApi.getPlayerOne().getName() + " §fvs §c"
+								"ï¿½4ï¿½lRDM ï¿½fHï¿½ ï¿½c" + RDMApi.playing.size() + " ï¿½fjogadores Participando");
+						Bukkit.broadcastMessage("ï¿½4ï¿½lRDM ï¿½c" + RDMApi.getPlayerOne().getName() + " ï¿½fvs ï¿½c"
 								+ RDMApi.getPlayerTwo().getName());
 						Bukkit.broadcastMessage(" ");
 						Protection.setImortal(RDMApi.getPlayerTwo(), false);
@@ -80,9 +80,9 @@ public class RDMContador {
 
 	private void mandarAvisos() {
 		Bukkit.broadcastMessage(" ");
-		Bukkit.broadcastMessage("§4§lRDM §fEvento RDM iniciando em §e" + FormatoTempo(Iniciando));
-		Bukkit.broadcastMessage("§4§lRDM §fHá §c" + RDMApi.playing.size() + " §fjogadores Participando");
-		Bukkit.broadcastMessage("§4§lRDM §fUse §4/entrar §fpara participar");
+		Bukkit.broadcastMessage("ï¿½4ï¿½lRDM ï¿½fEvento RDM iniciando em ï¿½e" + FormatoTempo(Iniciando));
+		Bukkit.broadcastMessage("ï¿½4ï¿½lRDM ï¿½fHï¿½ ï¿½c" + RDMApi.playing.size() + " ï¿½fjogadores Participando");
+		Bukkit.broadcastMessage("ï¿½4ï¿½lRDM ï¿½fUse ï¿½4/entrar ï¿½fpara participar");
 		Bukkit.broadcastMessage(" ");
 
 	}

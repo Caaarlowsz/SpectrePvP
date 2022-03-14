@@ -8,7 +8,7 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class Scoreboarde {
 
@@ -18,19 +18,19 @@ public class Scoreboarde {
 		Objective obj = sb.registerNewObjective("score", "dummy");
 		obj.setDisplaySlot(DisplaySlot.SIDEBAR);
 
-		FastOfflinePlayer line13 = new FastOfflinePlayer("§a");
-		FastOfflinePlayer line12 = new FastOfflinePlayer("§fGrupo: ");
-		FastOfflinePlayer line11 = new FastOfflinePlayer("§fDeaths");
-		FastOfflinePlayer line10 = new FastOfflinePlayer("§fStreak");
-		FastOfflinePlayer line9 = new FastOfflinePlayer("§5");
-		FastOfflinePlayer line8 = new FastOfflinePlayer("§fGrupo");
-		FastOfflinePlayer line7 = new FastOfflinePlayer("§fOnline");
-		FastOfflinePlayer line6 = new FastOfflinePlayer("§e");
-		FastOfflinePlayer line5 = new FastOfflinePlayer("§fXP");
-		FastOfflinePlayer line4 = new FastOfflinePlayer("§fKit");
-		FastOfflinePlayer line3 = new FastOfflinePlayer("§fClan");
-		FastOfflinePlayer line2 = new FastOfflinePlayer("§8");
-		FastOfflinePlayer line1 = new FastOfflinePlayer("§7/score");
+		FastOfflinePlayer line13 = new FastOfflinePlayer("ï¿½a");
+		FastOfflinePlayer line12 = new FastOfflinePlayer("ï¿½fGrupo: ");
+		FastOfflinePlayer line11 = new FastOfflinePlayer("ï¿½fDeaths");
+		FastOfflinePlayer line10 = new FastOfflinePlayer("ï¿½fStreak");
+		FastOfflinePlayer line9 = new FastOfflinePlayer("ï¿½5");
+		FastOfflinePlayer line8 = new FastOfflinePlayer("ï¿½fGrupo");
+		FastOfflinePlayer line7 = new FastOfflinePlayer("ï¿½fOnline");
+		FastOfflinePlayer line6 = new FastOfflinePlayer("ï¿½e");
+		FastOfflinePlayer line5 = new FastOfflinePlayer("ï¿½fXP");
+		FastOfflinePlayer line4 = new FastOfflinePlayer("ï¿½fKit");
+		FastOfflinePlayer line3 = new FastOfflinePlayer("ï¿½fClan");
+		FastOfflinePlayer line2 = new FastOfflinePlayer("ï¿½8");
+		FastOfflinePlayer line1 = new FastOfflinePlayer("ï¿½7/score");
 
 		Team l13 = sb.registerNewTeam("line13");
 		Team l12 = sb.registerNewTeam("line12");
@@ -110,15 +110,15 @@ public class Scoreboarde {
 						Team l1 = p.getScoreboard().getTeam("line1");
 
 						l13.setSuffix("");
-						l12.setSuffix(" §7");
-						l11.setSuffix(" §7");
-						l10.setSuffix(" §7");
+						l12.setSuffix(" ï¿½7");
+						l11.setSuffix(" ï¿½7");
+						l10.setSuffix(" ï¿½7");
 						l9.setSuffix(" ");
 						l8.setSuffix(" ");
-						l7.setSuffix(" §a" + Bukkit.getOnlinePlayers().length + "/130");
-						l5.setSuffix(" §a");
-						l4.setSuffix(" §a");
-						l3.setSuffix(" §a");
+						l7.setSuffix(" ï¿½a" + Bukkit.getOnlinePlayers().length + "/130");
+						l5.setSuffix(" ï¿½a");
+						l4.setSuffix(" ï¿½a");
+						l3.setSuffix(" ï¿½a");
 						l1.setSuffix("");
 					}
 				}
@@ -136,13 +136,13 @@ public class Scoreboarde {
 				public void run() {
 					for (Player p : Bukkit.getOnlinePlayers()) {
 						if (p.getScoreboard().getObjective("score") != null) {
-							p.getScoreboard().getObjective("score").setDisplayName("§b§lKITPVP");
+							p.getScoreboard().getObjective("score").setDisplayName("ï¿½bï¿½lKITPVP");
 						}
 						update(p);
 					}
 
 				}
-			}.runTaskTimer(Main.plugin, 0, 10L);
+			}.runTaskTimer(SpectrePvP.plugin, 0, 10L);
 		} catch (Error e) {
 		}
 	}

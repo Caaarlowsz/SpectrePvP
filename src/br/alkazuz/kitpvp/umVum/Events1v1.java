@@ -26,7 +26,7 @@ import org.bukkit.potion.PotionEffect;
 
 import br.alkazuz.kitpvp.api.MessageAPI;
 import br.alkazuz.kitpvp.api.WarpAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.protection.Protection;
 import br.alkazuz.kitpvp.score.ScoreBoarding;
 import br.alkazuz.kitpvp.v_1_8.TituloAPI;
@@ -59,7 +59,7 @@ public class Events1v1 implements Listener {
 			TituloAPI.mandarfull(Player2, "§6§l1v1", "§e" + p.getName() + " §7te desafiou.");
 			Player2.sendMessage(
 					MessageAPI.Command_Succes + "§aVocê foi convidado por §c" + p.getName() + " §apara 1v1");
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.plugin, new Runnable() {
 				public void run() {
 					if (ChamouDuelo.contains(p)) {
 						ChamouDuelo.remove(p);
@@ -75,7 +75,7 @@ public class Events1v1 implements Listener {
 		final Player player = event.getPlayer();
 		if (congelar.contains(player)) {
 			event.setTo(player.getLocation());
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.plugin, new Runnable() {
 				public void run() {
 					congelar.remove(player);
 				}
@@ -141,7 +141,7 @@ public class Events1v1 implements Listener {
 						Player2.getInventory().addItem(new ItemStack[] { Fisherman });
 						Player2.updateInventory();
 						p.updateInventory();
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+						Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 							public void run() {
 								for (Player plr : Bukkit.getOnlinePlayers()) {
 									Player2.hidePlayer(plr);
@@ -151,7 +151,7 @@ public class Events1v1 implements Listener {
 								}
 							}
 						}, 2L);
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+						Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.plugin, new Runnable() {
 							public void run() {
 								if (congelar.contains(p)) {
 									p.setMaxHealth(20);
@@ -161,7 +161,7 @@ public class Events1v1 implements Listener {
 								}
 							}
 						}, 20L);
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+						Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.plugin, new Runnable() {
 							public void run() {
 								if (congelar.contains(p)) {
 									p.setMaxHealth(20);
@@ -171,7 +171,7 @@ public class Events1v1 implements Listener {
 								}
 							}
 						}, 40L);
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+						Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.plugin, new Runnable() {
 							public void run() {
 								if (congelar.contains(p)) {
 									p.setMaxHealth(20);
@@ -229,7 +229,7 @@ public class Events1v1 implements Listener {
 					for (PotionEffect effect : m.getActivePotionEffects()) {
 						m.removePotionEffect(effect.getType());
 					}
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							WarpAPI.setWarp(v, "1v1");
 							v.setGameMode(GameMode.SURVIVAL);
@@ -249,7 +249,7 @@ public class Events1v1 implements Listener {
 					JogandoSair.remove(m.getName());
 					JogandoSair.remove(v.getName());
 
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							v.getInventory().setItem(4, Join1v1.Item_);
 							m.getInventory().setItem(4, Join1v1.Item_);
@@ -318,7 +318,7 @@ public class Events1v1 implements Listener {
 					for (PotionEffect effect : m.getActivePotionEffects()) {
 						m.removePotionEffect(effect.getType());
 					}
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							WarpAPI.setWarp(v, "1v1");
 							v.setGameMode(GameMode.SURVIVAL);
@@ -335,7 +335,7 @@ public class Events1v1 implements Listener {
 					Jogando1v1Player.remove(m);
 					JogandoSair.remove(m.getName());
 					JogandoSair.remove(v.getName());
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							v.getInventory().setItem(4, Join1v1.Item_);
 							m.getInventory().setItem(4, Join1v1.Item_);

@@ -17,15 +17,15 @@ import br.alkazuz.kitpvp.api.MessageAPI;
 import br.alkazuz.kitpvp.cooldown.CooldownAPI;
 import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class Strong extends Kit implements Listener {
 
 	public Strong() {
-		// super("Strong", new String[] {" ","§7Recebe um full iron"},new
+		// super("Strong", new String[] {" ","ï¿½7Recebe um full iron"},new
 		// ItemStack(Material.IRON_CHESTPLATE), "kit.Strong",KitType.BASIC);
 		super("Strong", 1400, false, new ItemStack(Material.WATCH), true, "kit.Strong", true,
-				new String[] { " ", " §e§l- §7Recebe um full iron" });
+				new String[] { " ", " ï¿½eï¿½l- ï¿½7Recebe um full iron" });
 	}
 
 	public static HashMap<Player, ItemStack[]> salvarArmadura = new HashMap<Player, ItemStack[]>();
@@ -40,7 +40,7 @@ public class Strong extends Kit implements Listener {
 		if ((KitAPI.getKitName(p) == "Strong") && (CooldownAPI.Cooldown.containsKey(p.getName()))
 				&& (p.getItemInHand().getType() == Material.WATCH)) {
 			e.setCancelled(true);
-			p.sendMessage(MessageAPI.Command_Error + "Você está com um Cooldown de §e" + CooldownAPI.Cooldown(p) + "s");
+			p.sendMessage(MessageAPI.Command_Error + "Vocï¿½ estï¿½ com um Cooldown de ï¿½e" + CooldownAPI.Cooldown(p) + "s");
 		} else {
 			if ((KitAPI.getKitName(p) == "Strong") && (!CooldownAPI.Cooldown.containsKey(p.getName())
 					&& (p.getItemInHand().getType() == Material.WATCH))) {
@@ -50,7 +50,7 @@ public class Strong extends Kit implements Listener {
 				p.getInventory().setArmorContents(null);
 				ItemStack Peito = new ItemStack(Material.IRON_CHESTPLATE);
 
-				ItemStack Calça = new ItemStack(Material.IRON_LEGGINGS);
+				ItemStack Calï¿½a = new ItemStack(Material.IRON_LEGGINGS);
 
 				ItemStack Bota = new ItemStack(Material.IRON_BOOTS);
 
@@ -60,22 +60,22 @@ public class Strong extends Kit implements Listener {
 				Espada.addEnchantment(Enchantment.DAMAGE_ALL, 1);
 
 				p.getInventory().setChestplate(Peito);
-				p.getInventory().setLeggings(Calça);
+				p.getInventory().setLeggings(Calï¿½a);
 				p.getInventory().setHelmet(Capacete);
 				p.getInventory().setBoots(Bota);
 				p.getInventory().setItem(0, Espada);
 				p.updateInventory();
 				CooldownAPI.addCooldown(p, 55);
 
-				p.sendMessage("§7» §7Você ficou full iron por §c10 segundos.");
+				p.sendMessage("ï¿½7ï¿½ ï¿½7Vocï¿½ ficou full iron por ï¿½c10 segundos.");
 				fulliron.add(p);
 
 				if (fulliron.contains(p)) {
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 
 							if (fulliron.contains(p)) {
-								p.sendMessage("§7» §cArmadura resetada!");
+								p.sendMessage("ï¿½7ï¿½ ï¿½cArmadura resetada!");
 								p.getInventory().setArmorContents(null);
 
 								p.closeInventory();
@@ -92,7 +92,7 @@ public class Strong extends Kit implements Listener {
 									ItemStack Espada = new ItemStack(Material.WOOD_SWORD);
 									Espada.addEnchantment(Enchantment.DAMAGE_ALL, 1);
 									ItemMeta kEspada = Espada.getItemMeta();
-									kEspada.setDisplayName("§eEspada");
+									kEspada.setDisplayName("ï¿½eEspada");
 									Espada.setItemMeta(kEspada);
 
 									p.getInventory().setItem(0, Espada);

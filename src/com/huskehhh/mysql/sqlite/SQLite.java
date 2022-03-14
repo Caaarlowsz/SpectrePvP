@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import com.huskehhh.mysql.Database;
 
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 /**
  * Connects to and uses a SQLite database
@@ -33,7 +33,7 @@ public class SQLite extends Database {
 			return connection;
 		}
 
-		File dataFolder = new File(Main.getPlugin().getDataFolder().getAbsolutePath());
+		File dataFolder = new File(SpectrePvP.getPlugin().getDataFolder().getAbsolutePath());
 		if (!dataFolder.exists()) {
 			dataFolder.mkdirs();
 		}

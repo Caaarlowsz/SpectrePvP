@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 
 import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class Achilles extends Kit implements Listener {
 
@@ -38,7 +38,7 @@ public class Achilles extends Kit implements Listener {
 					if ((hit.get(d) == null) || (hit.get(d) != p)) {
 						hit.put(d, p);
 						d.sendMessage("§cEle é um Achillees , agaiche para dar mais dano nele!");
-						Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+						Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpectrePvP.plugin, new Runnable() {
 							public void run() {
 								if (Achilles.hit.get(d) == p) {
 									Achilles.hit.remove(d);

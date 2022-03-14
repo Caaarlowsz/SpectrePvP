@@ -3,7 +3,7 @@ package br.alkazuz.kitpvp.api;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class TempoReiniciar {
 
@@ -11,7 +11,7 @@ public class TempoReiniciar {
 	public static int Iniciando = 301;
 
 	public TempoReiniciar() {
-		Tempo = Integer.valueOf(Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.plugin, new Runnable() {
+		Tempo = Integer.valueOf(Bukkit.getScheduler().scheduleSyncRepeatingTask(SpectrePvP.plugin, new Runnable() {
 
 			public void run() {
 				Iniciando -= 1;
@@ -53,7 +53,7 @@ public class TempoReiniciar {
 				}
 				if (Iniciando == 0) {
 					for (Player player : Bukkit.getOnlinePlayers()) {
-						player.kickPlayer("§cServidor Reiniciando...");
+						player.kickPlayer("ï¿½cServidor Reiniciando...");
 					}
 					CancelarTempo();
 					Iniciando = 301;
@@ -65,7 +65,7 @@ public class TempoReiniciar {
 	}
 
 	private void mandarAvisos() {
-		Bukkit.broadcastMessage("§d[Server] Servidor Reiniciando em " + FormatoTempo(Iniciando));
+		Bukkit.broadcastMessage("ï¿½d[Server] Servidor Reiniciando em " + FormatoTempo(Iniciando));
 
 	}
 

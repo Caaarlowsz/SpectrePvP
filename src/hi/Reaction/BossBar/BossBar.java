@@ -37,7 +37,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import BossBarAPI.ClassBuilder;
 import BossBarAPI.NMSClass;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 /**
  * © Copyright 2015 inventivetalent
@@ -77,7 +77,7 @@ public class BossBar extends BukkitRunnable {
 
 		if (timeout > 0) {
 			this.healthMinus = this.getMaxHealth() / timeout;
-			this.runTaskTimer(Main.getPlugin(), 20, 20);
+			this.runTaskTimer(SpectrePvP.getPlugin(), 20, 20);
 		}
 	}
 

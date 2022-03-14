@@ -16,7 +16,7 @@ import br.alkazuz.kitpvp.api.MessageAPI;
 import br.alkazuz.kitpvp.cooldown.CooldownAPI;
 import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class Phantom extends Kit implements Listener {
 
@@ -78,7 +78,7 @@ public class Phantom extends Kit implements Listener {
 				CooldownAPI.addCooldown(p, 35);
 
 				p.setAllowFlight(true);
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 					public void run() {
 						p.sendMessage("§c» §7Seu fly acabou");
 						p.getInventory().setArmorContents(null);

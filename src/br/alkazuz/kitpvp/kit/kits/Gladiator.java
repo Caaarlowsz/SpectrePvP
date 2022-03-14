@@ -29,7 +29,7 @@ import br.alkazuz.kitpvp.api.MessageAPI;
 import br.alkazuz.kitpvp.cooldown.CooldownAPI;
 import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class Gladiator extends Kit implements Listener {
 
@@ -58,7 +58,7 @@ public class Gladiator extends Kit implements Listener {
 		if (KitAPI.getKitPlayer(e.getPlayer()) != null
 				&& KitAPI.getKitPlayer(e.getPlayer()).getName().equalsIgnoreCase("gladiator")) {
 			e.setCancelled(false);
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 					e.getBlock().setType(Material.AIR);
 				}
@@ -143,7 +143,7 @@ public class Gladiator extends Kit implements Listener {
 					noExecut.add(r);
 					fighting.put(p.getName(), r.getName());
 					fighting.put(r.getName(), p.getName());
-					this.id2 = Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					this.id2 = Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							if ((Gladiator.fighting.containsKey(p.getName()))
 									&& (((String) Gladiator.fighting.get(p.getName())).equalsIgnoreCase(r.getName()))
@@ -152,7 +152,7 @@ public class Gladiator extends Kit implements Listener {
 							}
 						}
 					}, 2400L);
-					this.id1 = Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					this.id1 = Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 						public void run() {
 							if ((Gladiator.fighting.containsKey(p.getName()))
 									&& (((String) Gladiator.fighting.get(p.getName())).equalsIgnoreCase(r.getName()))
@@ -212,7 +212,7 @@ public class Gladiator extends Kit implements Listener {
 				&& playerInteractEvent.getPlayer().getGameMode() != GameMode.CREATIVE) {
 			playerInteractEvent.setCancelled(true);
 			playerInteractEvent.getClickedBlock().setType(Material.BEDROCK);
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 					if (noExecut.contains(playerInteractEvent.getPlayer())) {
 						playerInteractEvent.getClickedBlock().setType(Material.GLASS);

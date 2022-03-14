@@ -10,7 +10,7 @@ import br.alkazuz.kitpvp.api.API;
 import br.alkazuz.kitpvp.api.WarpAPI;
 import br.alkazuz.kitpvp.kit.KitAPI;
 import br.alkazuz.kitpvp.ks.KillStreakAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.parkour.ParkourAPI;
 import br.alkazuz.kitpvp.protection.Protection;
 import br.alkazuz.kitpvp.rdm.RDMApi;
@@ -24,8 +24,8 @@ public class cSpawn implements CommandExecutor {
 	public boolean onCommand(CommandSender Sender, Command Cmd, String Label, String[] Args) {
 		Player p = (Player) Sender;
 		if (Cmd.getName().equalsIgnoreCase("spawn")) {
-			p.sendMessage("§aTeleportando para o Spawn...");
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			p.sendMessage("ï¿½aTeleportando para o Spawn...");
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 					WarpAPI.setWarp(p, "Spawn");
 					API.sendItems(p);
@@ -37,7 +37,7 @@ public class cSpawn implements CommandExecutor {
 					RDMApi.delPlayer(p);
 					if (EventosAPI.playerPlayingHG(p)) {
 						EventosAPI.playersHG.remove(p.getName());
-						if (Main.EstadoHG != EstadoHG.INICIANDO) {
+						if (SpectrePvP.EstadoHG != EstadoHG.INICIANDO) {
 							for (Player pf : Bukkit.getOnlinePlayers()) {
 								if (EventosAPI.playerPlayingHG(pf)) {
 									EventosAPI.CheckarGanhador(pf);

@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 
 import br.alkazuz.kitpvp.api.API;
 import br.alkazuz.kitpvp.api.WarpAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.protection.Protection;
 import br.alkazuz.kitpvp.score.ScoreBoarding;
 
@@ -36,8 +36,8 @@ public class sTempoAcabar {
 		for (Player Jogadores : Bukkit.getOnlinePlayers()) {
 			if (EventosAPI.playerPlayingHG(Jogadores)) {
 				Jogadores.playSound(Jogadores.getLocation(), Sound.CLICK, 10.0F, 10.0F);
-				Jogadores.sendMessage(ChatColor.GOLD + "Partida termina em §e" + FormatoTempo(Iniciando));
-				Jogadores.sendMessage("§7Restam ainda §e" + EventosAPI.playersHG.size() + " §7Jogadores");
+				Jogadores.sendMessage(ChatColor.GOLD + "Partida termina em ï¿½e" + FormatoTempo(Iniciando));
+				Jogadores.sendMessage("ï¿½7Restam ainda ï¿½e" + EventosAPI.playersHG.size() + " ï¿½7Jogadores");
 			}
 		}
 	}
@@ -95,9 +95,9 @@ public class sTempoAcabar {
 	}
 
 	public sTempoAcabar() {
-		if (Main.EstadoHG == EstadoHG.ANDAMENTO) {
+		if (SpectrePvP.EstadoHG == EstadoHG.ANDAMENTO) {
 
-			Tempo = Integer.valueOf(Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Runnable() {
+			Tempo = Integer.valueOf(Bukkit.getScheduler().scheduleSyncRepeatingTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 					Iniciando -= 1;
 					if (Iniciando == 900) {
@@ -105,7 +105,7 @@ public class sTempoAcabar {
 						for (Player p : Bukkit.getOnlinePlayers()) {
 							if (!EventosAPI.playerPlayingHG(p))
 								continue;
-							p.getInventory().setItem(8, API.createItem(p, Material.COMPASS, "§eBussola",
+							p.getInventory().setItem(8, API.createItem(p, Material.COMPASS, "ï¿½eBussola",
 									new String[] { "" }, 1, (short) 0));
 						}
 					}
@@ -146,42 +146,42 @@ public class sTempoAcabar {
 							if (!EventosAPI.playerPlayingHG(players))
 								continue;
 							players.sendMessage(
-									"§6§l! §eTodos os Jogador foram Teleportados para o Spawn, pois a partida está no Fim!");
+									"ï¿½6ï¿½l! ï¿½eTodos os Jogador foram Teleportados para o Spawn, pois a partida estï¿½ no Fim!");
 							WarpAPI.setWarp(players, "HGSpawn");
 							Protection.setImortal(players, true);
-							Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+							Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 								public void run() {
-									players.sendMessage("§c§l!§7 §fPrepare-se para Lutar §c5");
+									players.sendMessage("ï¿½cï¿½l!ï¿½7 ï¿½fPrepare-se para Lutar ï¿½c5");
 									players.playSound(players.getLocation(), Sound.CLICK, 10.0F, 10.0F);
 								}
 							}, 20L);
-							Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+							Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 								public void run() {
-									players.sendMessage("§4§l!§7 §fPrepare-se para Lutar §c4");
+									players.sendMessage("ï¿½4ï¿½l!ï¿½7 ï¿½fPrepare-se para Lutar ï¿½c4");
 									players.playSound(players.getLocation(), Sound.CLICK, 10.0F, 10.0F);
 								}
 							}, 40L);
-							Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+							Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 								public void run() {
-									players.sendMessage("§4§l!§7 §fPrepare-se para Lutar §c3");
+									players.sendMessage("ï¿½4ï¿½l!ï¿½7 ï¿½fPrepare-se para Lutar ï¿½c3");
 									players.playSound(players.getLocation(), Sound.CLICK, 10.0F, 10.0F);
 								}
 							}, 60L);
-							Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+							Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 								public void run() {
-									players.sendMessage("§4§l!§7 §fPrepare-se para Lutar §c2");
+									players.sendMessage("ï¿½4ï¿½l!ï¿½7 ï¿½fPrepare-se para Lutar ï¿½c2");
 									players.playSound(players.getLocation(), Sound.CLICK, 10.0F, 10.0F);
 								}
 							}, 80L);
-							Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+							Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 								public void run() {
-									players.sendMessage("§4§l!§7 §fPrepare-se para Lutar §c1");
+									players.sendMessage("ï¿½4ï¿½l!ï¿½7 ï¿½fPrepare-se para Lutar ï¿½c1");
 									players.playSound(players.getLocation(), Sound.CLICK, 10.0F, 10.0F);
 								}
 							}, 100L);
-							Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+							Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 								public void run() {
-									players.sendMessage("§4§l!§7 §fLute!!!");
+									players.sendMessage("ï¿½4ï¿½l!ï¿½7 ï¿½fLute!!!");
 									Protection.setImortal(players, false);
 									players.playSound(players.getLocation(), Sound.NOTE_PLING, 10.0F, 10.0F);
 								}
@@ -222,7 +222,7 @@ public class sTempoAcabar {
 						for (Player players : Bukkit.getOnlinePlayers()) {
 							if (!EventosAPI.playerPlayingHG(players))
 								continue;
-							players.sendMessage("§cO tempo da partida acabou e não houve vencedores");
+							players.sendMessage("ï¿½cO tempo da partida acabou e nï¿½o houve vencedores");
 							WarpAPI.setWarp(players, "Spawn");
 							players.getInventory().clear();
 						}
@@ -256,16 +256,16 @@ public class sTempoAcabar {
 								KitAPI.thor.remove(players.getName());
 							}
 						}
-						Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(),
+						Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(),
 								(Runnable) new Runnable() {
 									@Override
 									public void run() {
 										Bukkit.broadcastMessage(
-												"§2§lSpectrePvP §fPartida de §eHG §finiciando digite §a/simulador§f para entrar");
+												"ï¿½2ï¿½lSpectrePvP ï¿½fPartida de ï¿½eHG ï¿½finiciando digite ï¿½a/simuladorï¿½f para entrar");
 										sTempoIniciar.Iniciando = 121;
 										sTempoIniciar.CancelarTempo();
 
-										Main.EstadoHG = br.alkazuz.kitpvp.simulador.EstadoHG.INICIANDO;
+										SpectrePvP.EstadoHG = br.alkazuz.kitpvp.simulador.EstadoHG.INICIANDO;
 										sTempoAcabar.Iniciando = 901;
 										sTempoAcabar.CancelarTempo();
 										sTempoInvencible.CancelarTempo();

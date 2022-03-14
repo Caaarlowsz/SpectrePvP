@@ -15,7 +15,7 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import br.alkazuz.kitpvp.kit.KitAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.mysql.manager.Status;
 
 public class CombatLog implements Listener {
@@ -39,14 +39,14 @@ public class CombatLog implements Listener {
 			if ((!Sair.contains(p.getName())) && (!Sair.contains(hitter.getName()))) {
 				Sair.add(p.getName());
 				Sair.add(hitter.getName());
-				p.sendMessage("§4§lPvP §fVoce entrou em combate com §c" + hitter.getName());
-				hitter.sendMessage("§4§lPvP §fVoce entrou em combate com §c" + p.getName());
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+				p.sendMessage("ï¿½4ï¿½lPvP ï¿½fVoce entrou em combate com ï¿½c" + hitter.getName());
+				hitter.sendMessage("ï¿½4ï¿½lPvP ï¿½fVoce entrou em combate com ï¿½c" + p.getName());
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.plugin, new Runnable() {
 					public void run() {
 						CombatLog.Sair.remove(p.getName());
 						CombatLog.Sair.remove(hitter.getName());
-						p.sendMessage("§4§lPvP §fVoce nao esta mais em combate !");
-						hitter.sendMessage("§4§lPvP §fVoce nao esta mais em combate !");
+						p.sendMessage("ï¿½4ï¿½lPvP ï¿½fVoce nao esta mais em combate !");
+						hitter.sendMessage("ï¿½4ï¿½lPvP ï¿½fVoce nao esta mais em combate !");
 					}
 				}, 200L);
 			}
@@ -59,7 +59,7 @@ public class CombatLog implements Listener {
 		if (Sair.contains(p.getName())) {
 			p.setHealth(0.0D);
 			p.teleport(p.getWorld().getSpawnLocation());
-			Bukkit.broadcastMessage("§4§lPvP §c" + p.getName() + " §fdeslogou em combate e perdeu §610 §7de §eXP §7!");
+			Bukkit.broadcastMessage("ï¿½4ï¿½lPvP ï¿½c" + p.getName() + " ï¿½fdeslogou em combate e perdeu ï¿½610 ï¿½7de ï¿½eXP ï¿½7!");
 			Status.removeCoins(p, 10);
 		}
 	}
@@ -69,7 +69,7 @@ public class CombatLog implements Listener {
 		Player p = event.getPlayer();
 		if ((Sair.contains(p.getName())) && ((event.getMessage().toLowerCase().startsWith("/")))) {
 			event.setCancelled(true);
-			p.sendMessage("§4§lPvP §cVoce está em combate !");
+			p.sendMessage("ï¿½4ï¿½lPvP ï¿½cVoce estï¿½ em combate !");
 		}
 	}
 }

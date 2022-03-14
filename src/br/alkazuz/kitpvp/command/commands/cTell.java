@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
 import br.alkazuz.groupapi.api.GroupAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class cTell implements CommandExecutor, Listener {
 
@@ -60,7 +60,7 @@ public class cTell implements CommandExecutor, Listener {
 				}
 			}
 			cooldown.add(p);
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 					cooldown.remove(p);
 				}
@@ -132,7 +132,7 @@ public class cTell implements CommandExecutor, Listener {
 				}
 			}
 			cooldown.add(p);
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 					cooldown.remove(p);
 				}

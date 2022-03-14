@@ -36,7 +36,7 @@ import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
 import br.alkazuz.kitpvp.kit.KitManager;
 import br.alkazuz.kitpvp.ks.KillStreakAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.menu.CaixaMenu;
 import br.alkazuz.kitpvp.menu.KitDiarioMenu;
 import br.alkazuz.kitpvp.menu.KitMenu;
@@ -69,7 +69,7 @@ public class MenuListener implements Listener {
 		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn")) {
 			delay.add(p);
 		}
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), (Runnable) new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), (Runnable) new Runnable() {
 			@Override
 			public void run() {
 				if (delay.contains(p)) {
@@ -221,33 +221,33 @@ public class MenuListener implements Listener {
 			return;
 
 		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn")
-				&& e.getInventory().getTitle().equalsIgnoreCase("§aInformações")) {
+				&& e.getInventory().getTitle().equalsIgnoreCase("ï¿½aInformaï¿½ï¿½es")) {
 			e.setCancelled(true);
 		}
 
 		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn") && e.getInventory().getTitle().equals("Warps")) {
 			p.getInventory().clear();
 			if (e.getSlot() == 15) {
-				p.sendMessage("§aTeleportando para Warp MLG...");
+				p.sendMessage("ï¿½aTeleportando para Warp MLG...");
 				p.closeInventory();
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 					public void run() {
 						WarpAPI.setWarp(p, "MLG");
 						MLGAPI.setupPlayer(p);
 						p.setGameMode(GameMode.SURVIVAL);
 						p.getInventory().clear();
 						p.getInventory().setItem(4,
-								MenusAPI.createItemMenu(Material.WATER_BUCKET, "§b§lMLG", new String[] { "" }));
+								MenusAPI.createItemMenu(Material.WATER_BUCKET, "ï¿½bï¿½lMLG", new String[] { "" }));
 						ScoreBoarding.setScoreBoard(p);
 						p.updateInventory();
 					}
 				}, 2 * 20);
 			}
 			if (e.getSlot() == 12) {
-				p.sendMessage("§aTeleportando para Warp FPS...");
+				p.sendMessage("ï¿½aTeleportando para Warp FPS...");
 
 				p.closeInventory();
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 					public void run() {
 						WarpAPI.setWarp(p, "FPS");
 						ItemStack sopa = new ItemStack(Material.MUSHROOM_SOUP);
@@ -256,12 +256,12 @@ public class MenuListener implements Listener {
 							p.updateInventory();
 						}
 
-						p.getInventory().setItem(13, API.createItem(p, Material.RED_MUSHROOM, "§cCogumelo Vermelho",
+						p.getInventory().setItem(13, API.createItem(p, Material.RED_MUSHROOM, "ï¿½cCogumelo Vermelho",
 								new String[] { "" }, 64, (short) 0));
-						p.getInventory().setItem(14, API.createItem(p, Material.BROWN_MUSHROOM, "§eCogumelo Marrom",
+						p.getInventory().setItem(14, API.createItem(p, Material.BROWN_MUSHROOM, "ï¿½eCogumelo Marrom",
 								new String[] { "" }, 64, (short) 0));
 						p.getInventory().setItem(15,
-								API.createItem(p, Material.BOWL, "§7Tigela", new String[] { "" }, 64, (short) 0));
+								API.createItem(p, Material.BOWL, "ï¿½7Tigela", new String[] { "" }, 64, (short) 0));
 						p.removePotionEffect(PotionEffectType.SLOW);
 						p.removePotionEffect(PotionEffectType.BLINDNESS);
 						p.removePotionEffect(PotionEffectType.SPEED);
@@ -269,32 +269,32 @@ public class MenuListener implements Listener {
 						ItemStack Espada = new ItemStack(Material.DIAMOND_SWORD);
 
 						ItemMeta kEspada = Espada.getItemMeta();
-						kEspada.setDisplayName("§eEspada " + KitAPI.getKitName(p));
+						kEspada.setDisplayName("ï¿½eEspada " + KitAPI.getKitName(p));
 						Espada.setItemMeta(kEspada);
 						Protection.setImortal(p, true);
 						p.getInventory().setItem(0, Espada);
 
 						ItemStack Peito = new ItemStack(Material.IRON_CHESTPLATE);
 						ItemMeta kPeito = Peito.getItemMeta();
-						kPeito.setDisplayName("§ePeitoral");
+						kPeito.setDisplayName("ï¿½ePeitoral");
 						Peito.setItemMeta(kPeito);
 						p.getInventory().setChestplate(Peito);
 
-						ItemStack Calça = new ItemStack(Material.IRON_LEGGINGS);
-						ItemMeta kCalça = Calça.getItemMeta();
-						kCalça.setDisplayName("§eCalça");
-						Calça.setItemMeta(kCalça);
-						// p.getInventory().setLeggings(Calça);
+						ItemStack Calï¿½a = new ItemStack(Material.IRON_LEGGINGS);
+						ItemMeta kCalï¿½a = Calï¿½a.getItemMeta();
+						kCalï¿½a.setDisplayName("ï¿½eCalï¿½a");
+						Calï¿½a.setItemMeta(kCalï¿½a);
+						// p.getInventory().setLeggings(Calï¿½a);
 
 						ItemStack bota = new ItemStack(Material.IRON_BOOTS);
 						ItemMeta kbota = bota.getItemMeta();
-						kbota.setDisplayName("§eBota");
+						kbota.setDisplayName("ï¿½eBota");
 						bota.setItemMeta(kbota);
 						// p.getInventory().setBoots(bota);
 
 						ItemStack Capacete = new ItemStack(Material.IRON_HELMET);
 						ItemMeta kCapacete = Capacete.getItemMeta();
-						kCapacete.setDisplayName("§eCapacete");
+						kCapacete.setDisplayName("ï¿½eCapacete");
 						Capacete.setItemMeta(kCapacete);
 						// p.getInventory().setHelmet(Capacete);
 						ScoreBoarding.setScoreBoard(p);
@@ -305,9 +305,9 @@ public class MenuListener implements Listener {
 			}
 
 			if (e.getSlot() == 14) {
-				p.sendMessage("§aTeleportando para Warp LavaChallenge...");
+				p.sendMessage("ï¿½aTeleportando para Warp LavaChallenge...");
 				p.closeInventory();
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 					public void run() {
 						WarpAPI.setWarp(p, "Lava");
 						p.getInventory().clear();
@@ -317,12 +317,12 @@ public class MenuListener implements Listener {
 							p.getInventory().setItem(i, sopa);
 							p.updateInventory();
 						}
-						p.getInventory().setItem(13, API.createItem(p, Material.RED_MUSHROOM, "§cCogumelo Vermelho",
+						p.getInventory().setItem(13, API.createItem(p, Material.RED_MUSHROOM, "ï¿½cCogumelo Vermelho",
 								new String[] { "" }, 64, (short) 0));
-						p.getInventory().setItem(14, API.createItem(p, Material.BROWN_MUSHROOM, "§eCogumelo Marrom",
+						p.getInventory().setItem(14, API.createItem(p, Material.BROWN_MUSHROOM, "ï¿½eCogumelo Marrom",
 								new String[] { "" }, 64, (short) 0));
 						p.getInventory().setItem(15,
-								API.createItem(p, Material.BOWL, "§7Tigela", new String[] { "" }, 64, (short) 0));
+								API.createItem(p, Material.BOWL, "ï¿½7Tigela", new String[] { "" }, 64, (short) 0));
 						ScoreBoarding.setScoreBoard(p);
 						p.updateInventory();
 
@@ -331,9 +331,9 @@ public class MenuListener implements Listener {
 			}
 
 			if (e.getSlot() == 13) {
-				p.sendMessage("§aTeleportando para Warp 1v1...");
+				p.sendMessage("ï¿½aTeleportando para Warp 1v1...");
 				p.closeInventory();
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 					public void run() {
 						WarpAPI.setWarp(p, "1v1");
 						p.getInventory().clear();
@@ -341,7 +341,7 @@ public class MenuListener implements Listener {
 
 						ItemStack Espada = new ItemStack(Material.BLAZE_ROD);
 						ItemMeta kEspada = Espada.getItemMeta();
-						kEspada.setDisplayName("§e1v1");
+						kEspada.setDisplayName("ï¿½e1v1");
 						Espada.setItemMeta(kEspada);
 
 						p.removePotionEffect(PotionEffectType.SPEED);
@@ -354,14 +354,14 @@ public class MenuListener implements Listener {
 				}, 2 * 20);
 			}
 			if (e.getSlot() == 11) {
-				p.sendMessage("§aTeleportando para Warp Parkour...");
+				p.sendMessage("ï¿½aTeleportando para Warp Parkour...");
 				p.closeInventory();
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 					public void run() {
 						WarpAPI.setWarp(p, "Parkour");
 						p.getInventory().clear();
 						p.getInventory().setItem(4,
-								MenusAPI.createItemMenu(Material.REDSTONE_BLOCK, "§cSair", new String[] { "" }));
+								MenusAPI.createItemMenu(Material.REDSTONE_BLOCK, "ï¿½cSair", new String[] { "" }));
 						ScoreBoarding.setScoreBoard(p);
 						p.updateInventory();
 						ParkourAPI.addPlayer(p);
@@ -372,7 +372,7 @@ public class MenuListener implements Listener {
 		}
 
 		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn")
-				&& e.getInventory().getTitle().equalsIgnoreCase("§aConquistas")) {
+				&& e.getInventory().getTitle().equalsIgnoreCase("ï¿½aConquistas")) {
 			if (e.getCurrentItem().getTypeId() == 159) {
 				for (Conquista conq : ConquistaManager.conquistas) {
 					if (conq.getName().equalsIgnoreCase(
@@ -382,7 +382,7 @@ public class MenuListener implements Listener {
 							return;
 						}
 						if (!conq.onComplete(p)) {
-							p.sendMessage(MessageAPI.Command_Error + "Você ainda não completou essa conquista");
+							p.sendMessage(MessageAPI.Command_Error + "Vocï¿½ ainda nï¿½o completou essa conquista");
 							p.closeInventory();
 						} else {
 							p.closeInventory();
@@ -395,12 +395,12 @@ public class MenuListener implements Listener {
 			e.setCancelled(true);
 		}
 
-		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn") && e.getInventory().getTitle().equalsIgnoreCase("§aRanks")) {
+		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn") && e.getInventory().getTitle().equalsIgnoreCase("ï¿½aRanks")) {
 			e.setCancelled(true);
 		}
 
 		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn")
-				&& e.getInventory().getTitle().equalsIgnoreCase("§aLoja de Cash")) {
+				&& e.getInventory().getTitle().equalsIgnoreCase("ï¿½aLoja de Cash")) {
 			if (e.getSlot() == 3) {
 				KitMenuCash.OpenInventory(p);
 				e.setCancelled(true);
@@ -411,7 +411,7 @@ public class MenuListener implements Listener {
 			}
 		}
 
-		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn") && e.getInventory().getTitle().equalsIgnoreCase("§aLoja")) {
+		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn") && e.getInventory().getTitle().equalsIgnoreCase("ï¿½aLoja")) {
 			if (e.getSlot() == 3) {
 				LojaKit.OpenInventory(p);
 				e.setCancelled(true);
@@ -423,7 +423,7 @@ public class MenuListener implements Listener {
 		}
 
 		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn")
-				&& e.getInventory().getTitle().equalsIgnoreCase("§aLoja de Kits (CASH)")) {
+				&& e.getInventory().getTitle().equalsIgnoreCase("ï¿½aLoja de Kits (CASH)")) {
 			if (e.getCurrentItem() == null || e.getCurrentItem().getItemMeta() == null)
 				return;
 			for (Kit kits : KitManager.kits) {
@@ -432,7 +432,7 @@ public class MenuListener implements Listener {
 						p.sendMessage(MessageAPI.Command_Error + "Cash insuficientes");
 						p.closeInventory();
 					} else {
-						p.sendMessage(MessageAPI.Command_Succes + "Você comprou o Kit §e" + kits.getName());
+						p.sendMessage(MessageAPI.Command_Succes + "Vocï¿½ comprou o Kit ï¿½e" + kits.getName());
 						KitAPI.darKit(p, kits);
 						Status.removeCash(p.getName(), KitMenuCash.getPrice(kits));
 						p.closeInventory();
@@ -444,7 +444,7 @@ public class MenuListener implements Listener {
 		}
 
 		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn")
-				&& e.getInventory().getTitle().equalsIgnoreCase("§aLoja de VIP")) {
+				&& e.getInventory().getTitle().equalsIgnoreCase("ï¿½aLoja de VIP")) {
 			if (e.getCurrentItem() == null || e.getCurrentItem().getItemMeta() == null)
 				return;
 			if (e.getSlot() == 2) {
@@ -455,14 +455,14 @@ public class MenuListener implements Listener {
 					return;
 				}
 				if (GroupAPI.getGroup(p).equalsIgnoreCase("pro") || GroupAPI.getGroup(p).equalsIgnoreCase("mvp")) {
-					p.sendMessage(MessageAPI.Command_Error + "Você não pode trocar de VIP, espere o atual expirar!");
+					p.sendMessage(MessageAPI.Command_Error + "Vocï¿½ nï¿½o pode trocar de VIP, espere o atual expirar!");
 					e.setCancelled(true);
 					return;
 				}
 				Status.removeCash(p.getName(), 5);
-				p.sendMessage(MessageAPI.Command_Succes + "Você comprou esse VIP com Sucesso");
+				p.sendMessage(MessageAPI.Command_Succes + "Vocï¿½ comprou esse VIP com Sucesso");
 				VIPAPI.addVIP(p, "light", 30);
-				p.sendMessage("§aEle expira em §c" + GroupAPI.getTime(p));
+				p.sendMessage("ï¿½aEle expira em ï¿½c" + GroupAPI.getTime(p));
 				p.closeInventory();
 			}
 			if (e.getSlot() == 4) {
@@ -473,14 +473,14 @@ public class MenuListener implements Listener {
 					return;
 				}
 				if (GroupAPI.getGroup(p).equalsIgnoreCase("pro") || GroupAPI.getGroup(p).equalsIgnoreCase("light")) {
-					p.sendMessage(MessageAPI.Command_Error + "Você não pode trocar de VIP, espere o atual expirar!");
+					p.sendMessage(MessageAPI.Command_Error + "Vocï¿½ nï¿½o pode trocar de VIP, espere o atual expirar!");
 					e.setCancelled(true);
 					return;
 				}
 				Status.removeCash(p.getName(), 10);
-				p.sendMessage(MessageAPI.Command_Succes + "Você comprou esse VIP com Sucesso");
+				p.sendMessage(MessageAPI.Command_Succes + "Vocï¿½ comprou esse VIP com Sucesso");
 				VIPAPI.addVIP(p, "mvp", 30);
-				p.sendMessage("§aEle expira em §c" + GroupAPI.getTime(p));
+				p.sendMessage("ï¿½aEle expira em ï¿½c" + GroupAPI.getTime(p));
 				p.closeInventory();
 			}
 			if (e.getSlot() == 6) {
@@ -491,14 +491,14 @@ public class MenuListener implements Listener {
 					return;
 				}
 				if (GroupAPI.getGroup(p).equalsIgnoreCase("light") || GroupAPI.getGroup(p).equalsIgnoreCase("light")) {
-					p.sendMessage(MessageAPI.Command_Error + "Você não pode trocar de VIP, espere o atual expirar!");
+					p.sendMessage(MessageAPI.Command_Error + "Vocï¿½ nï¿½o pode trocar de VIP, espere o atual expirar!");
 					e.setCancelled(true);
 					return;
 				}
 				Status.removeCash(p.getName(), 15);
-				p.sendMessage(MessageAPI.Command_Succes + "Você comprou esse VIP com Sucesso");
+				p.sendMessage(MessageAPI.Command_Succes + "Vocï¿½ comprou esse VIP com Sucesso");
 				VIPAPI.addVIP(p, "pro", 30);
-				p.sendMessage("§aEle expira em §c" + GroupAPI.getTime(p));
+				p.sendMessage("ï¿½aEle expira em ï¿½c" + GroupAPI.getTime(p));
 				p.closeInventory();
 
 			}
@@ -507,7 +507,7 @@ public class MenuListener implements Listener {
 		}
 
 		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn")
-				&& e.getInventory().getTitle().equalsIgnoreCase("§aLoja de Kits")) {
+				&& e.getInventory().getTitle().equalsIgnoreCase("ï¿½aLoja de Kits")) {
 			if (e.getCurrentItem() == null || e.getCurrentItem().getItemMeta() == null)
 				return;
 			for (Kit kits : KitManager.kits) {
@@ -516,7 +516,7 @@ public class MenuListener implements Listener {
 						p.sendMessage(MessageAPI.Command_Error + "Coins insuficientes");
 						p.closeInventory();
 					} else {
-						p.sendMessage(MessageAPI.Command_Succes + "Você comprou o Kit §e" + kits.getName());
+						p.sendMessage(MessageAPI.Command_Succes + "Vocï¿½ comprou o Kit ï¿½e" + kits.getName());
 						KitAPI.darKit(p, kits);
 						Status.removeCoins(p, kits.getPrice());
 						p.closeInventory();
@@ -528,7 +528,7 @@ public class MenuListener implements Listener {
 		}
 
 		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn")
-				&& e.getInventory().getTitle().equalsIgnoreCase("§aLoja de Caixas")) {
+				&& e.getInventory().getTitle().equalsIgnoreCase("ï¿½aLoja de Caixas")) {
 			e.setCancelled(true);
 			if (e.getSlot() == 12) {
 				if (Status.getCoins(p) < 1500) {
@@ -568,16 +568,16 @@ public class MenuListener implements Listener {
 		}
 
 		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn")
-				&& e.getInventory().getTitle().equalsIgnoreCase("§aKit diário")) {
+				&& e.getInventory().getTitle().equalsIgnoreCase("ï¿½aKit diï¿½rio")) {
 			e.setCancelled(true);
 		}
 
 		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn")
-				&& e.getInventory().getTitle().equalsIgnoreCase("§aAbrindo caixa...")) {
+				&& e.getInventory().getTitle().equalsIgnoreCase("ï¿½aAbrindo caixa...")) {
 			e.setCancelled(true);
 		}
 
-		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn") && e.getInventory().getTitle().equalsIgnoreCase("§aCaixas")) {
+		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn") && e.getInventory().getTitle().equalsIgnoreCase("ï¿½aCaixas")) {
 			if (e.getSlot() == 8) {
 				MenusAPI.lojaCaixas(p);
 			}
@@ -585,12 +585,12 @@ public class MenuListener implements Listener {
 				if (Status.getCaixas(p) > 0) {
 					new CaixaMenu(p).newScroll();
 				} else {
-					p.sendMessage(MessageAPI.Command_Error + "Você não possui nenhuma caixa");
+					p.sendMessage(MessageAPI.Command_Error + "Vocï¿½ nï¿½o possui nenhuma caixa");
 				}
 			}
 			e.setCancelled(true);
 		}
-		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn") && e.getInventory().getTitle().equalsIgnoreCase("§aKits")) {
+		if (WarpAPI.getWarp(p).equalsIgnoreCase("Spawn") && e.getInventory().getTitle().equalsIgnoreCase("ï¿½aKits")) {
 			if (e.getSlot() == 4) {
 				LojaKit.OpenInventory(p);
 			}
@@ -604,7 +604,7 @@ public class MenuListener implements Listener {
 						i = 3;
 					}
 					KitAPI.setKit(p, kits);
-					p.sendMessage(MessageAPI.Command_Succes + "Você selecionou o Kit §e" + kits.getName());
+					p.sendMessage(MessageAPI.Command_Succes + "Vocï¿½ selecionou o Kit ï¿½e" + kits.getName());
 					WarpAPI.setWarp(p, String.valueOf("Arena" + i));
 					Protection.setImortal(p, false);
 					KitAPI.giveKit(p, kits);

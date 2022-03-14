@@ -7,13 +7,13 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class LogManager {
 
 	public static void createLogGrupo(String log) {
 		try {
-			final File logFile = new File(Main.getPlugin().getDataFolder(), "logsGrupos.log");
+			final File logFile = new File(SpectrePvP.getPlugin().getDataFolder(), "logsGrupos.log");
 			final FileWriter fw = new FileWriter(logFile, true);
 			final PrintWriter pw = new PrintWriter(fw);
 			Date data = new Date();
@@ -28,7 +28,7 @@ public class LogManager {
 
 	public static void createLogStatus(String log) {
 		try {
-			final File logFile = new File(Main.getPlugin().getDataFolder(), "logsStatus.log");
+			final File logFile = new File(SpectrePvP.getPlugin().getDataFolder(), "logsStatus.log");
 			final FileWriter fw = new FileWriter(logFile, true);
 			final PrintWriter pw = new PrintWriter(fw);
 			Date data = new Date();

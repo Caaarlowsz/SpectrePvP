@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 
 import br.alkazuz.kitpvp.api.WarpAPI;
 import br.alkazuz.kitpvp.config.WarpConfig;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.mysql.manager.Status;
 import br.alkazuz.kitpvp.score.ScoreBoarding;
 
@@ -24,10 +24,10 @@ public class EventosAPI {
 
 	public static void CheckarGanhador(Player p) {
 
-		if (playersHG.size() == 1 && Main.EstadoHG != EstadoHG.INICIANDO) {
-			Bukkit.broadcastMessage("§e" + p.getName() + " §aGanhou a Partida do §eSimulador");
+		if (playersHG.size() == 1 && SpectrePvP.EstadoHG != EstadoHG.INICIANDO) {
+			Bukkit.broadcastMessage("ï¿½e" + p.getName() + " ï¿½aGanhou a Partida do ï¿½eSimulador");
 
-			p.sendMessage("§aParabéns você venceu a partida de HungerGames e ganhou §c200 coins");
+			p.sendMessage("ï¿½aParabï¿½ns vocï¿½ venceu a partida de HungerGames e ganhou ï¿½c200 coins");
 			Status.addCoins(p, 200);
 
 			sTempoIniciar.CancelarTempo();
@@ -49,11 +49,11 @@ public class EventosAPI {
 			for (final Chunk chunk : world.getLoadedChunks()) {
 				world.unloadChunk(chunk);
 			}
-			Bukkit.broadcastMessage("§2§lSpectrePvP §7Partida de §eHG §7iniciando digite §a/simulador§7 para entrar");
+			Bukkit.broadcastMessage("ï¿½2ï¿½lSpectrePvP ï¿½7Partida de ï¿½eHG ï¿½7iniciando digite ï¿½a/simuladorï¿½7 para entrar");
 			sTempoIniciar.Iniciando = 121;
 			sTempoIniciar.CancelarTempo();
 
-			Main.EstadoHG = br.alkazuz.kitpvp.simulador.EstadoHG.INICIANDO;
+			SpectrePvP.EstadoHG = br.alkazuz.kitpvp.simulador.EstadoHG.INICIANDO;
 			sTempoAcabar.Iniciando = 901;
 			sTempoAcabar.CancelarTempo();
 			sTempoInvencible.CancelarTempo();

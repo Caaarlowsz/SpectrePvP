@@ -8,7 +8,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import br.alkazuz.kitpvp.anticheat.Utills;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class Macro implements Listener {
 
@@ -43,13 +43,13 @@ public class Macro implements Listener {
 				Utills.ClicksMacro.remove(Jogador);
 				Utills.MacroClicks.remove(Jogador);
 			}
-		}.runTaskLater(Main.getPlugin(), 20L);
+		}.runTaskLater(SpectrePvP.getPlugin(), 20L);
 		if (((Integer) Utills.MacroClicks.get(Jogador)).intValue() >= 45) {
 			Utills.Macro = MacroTalvez.getMenssagem().replace("nick", Jogador.getDisplayName())
 					.replace("avisos", Utills.AvisosMacro.get(Jogador) + "")
 					.replace("clicks", Utills.ClicksMacro.get(Jogador) + "");
 
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 					if (Utills.Macro != null) {
 						Utills.AvisosMacro.put(Jogador, Integer.valueOf(Utills.AvisosMacro.get(Jogador) + 1));
@@ -69,7 +69,7 @@ public class Macro implements Listener {
 					.replace("avisos", Utills.AvisosMacro.get(Jogador) + "")
 					.replace("clicks", Utills.ClicksMacro.get(Jogador) + "");
 
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 					if (Utills.Macro != null) {
 						Utills.AvisosMacro.put(Jogador, Integer.valueOf(Utills.AvisosMacro.get(Jogador) + 1));
@@ -89,7 +89,7 @@ public class Macro implements Listener {
 					.replace("avisos", Utills.AvisosMacro.get(Jogador) + "")
 					.replace("clicks", Utills.ClicksMacro.get(Jogador) + "");
 
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 					if (Utills.Macro != null) {
 						Utills.AvisosMacro.put(Jogador, Integer.valueOf(Utills.AvisosMacro.get(Jogador) + 1));

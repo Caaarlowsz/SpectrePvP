@@ -2,7 +2,7 @@ package br.alkazuz.kitpvp.api;
 
 import org.bukkit.Bukkit;
 
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class Limpar {
 
@@ -10,11 +10,11 @@ public class Limpar {
 	public static int Iniciando = 0;
 
 	public Limpar() {
-		Tempo = Integer.valueOf(Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.plugin, new Runnable() {
+		Tempo = Integer.valueOf(Bukkit.getScheduler().scheduleSyncRepeatingTask(SpectrePvP.plugin, new Runnable() {
 			public void run() {
 				Iniciando += 1;
 				if (Iniciando >= 50) {
-					Main.limparServidor();
+					SpectrePvP.limparServidor();
 					Iniciando = 0;
 				}
 			}

@@ -7,7 +7,7 @@ import java.util.Scanner;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.mysql.manager.Status;
 
 public class WebUtils {
@@ -21,7 +21,7 @@ public class WebUtils {
 	}
 
 	public boolean atualizar() {
-		Bukkit.getScheduler().runTaskAsynchronously(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().runTaskAsynchronously(SpectrePvP.getPlugin(), new Runnable() {
 			@Override
 			public void run() {
 				try {
@@ -46,7 +46,7 @@ public class WebUtils {
 	}
 
 	public boolean registro() {
-		Bukkit.getScheduler().runTaskAsynchronously(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().runTaskAsynchronously(SpectrePvP.getPlugin(), new Runnable() {
 			@Override
 			public void run() {
 				try {

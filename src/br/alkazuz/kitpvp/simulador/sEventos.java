@@ -14,13 +14,13 @@ import org.bukkit.event.player.PlayerBucketEmptyEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.score.ScoreBoarding;
 
 public class sEventos implements Listener {
 
 	public static ArrayList<Block> blocksPlaced = new ArrayList<Block>();
-	Main plugin;
+	SpectrePvP plugin;
 
 	@EventHandler
 	public void aoSair(PlayerQuitEvent e) {
@@ -66,7 +66,7 @@ public class sEventos implements Listener {
 		Player p = event.getPlayer();
 		if ((EventosAPI.playerPlayingHG(p)) && ((!event.getMessage().toLowerCase().startsWith("/spawn")))) {
 			event.setCancelled(true);
-			p.sendMessage("§cVocê está no Simulador, use §4/spawn §cpara executar comandos");
+			p.sendMessage("ï¿½cVocï¿½ estï¿½ no Simulador, use ï¿½4/spawn ï¿½cpara executar comandos");
 		}
 	}
 

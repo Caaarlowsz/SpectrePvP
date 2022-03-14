@@ -1,9 +1,11 @@
-package br.alkazuz.kitpvp.main;
+package com.github.caaarlowsz.spectremc.kitpvp;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import com.github.caaarlowsz.kitpvpapi.KitPvP;
+import com.github.caaarlowsz.kitpvpapi.KitPvPAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Chunk;
@@ -114,7 +116,27 @@ import br.alkazuz.kitpvp.umVum.Events1v1;
 import br.alkazuz.kitpvp.v_1_8.TabAPI;
 import net.minecraft.server.v1_7_R4.Village;
 
-public class Main extends JavaPlugin implements Listener {
+public class SpectrePvP extends JavaPlugin implements KitPvP, Listener {
+
+	@Override
+	public void onEnable() {
+		super.onEnable();
+		KitPvPAPI.setInstance(this);
+
+		// TODO: Remover quando melhorar a classe principal
+		this.enable();
+	}
+
+	@Override
+	public void onDisable() {
+		super.onDisable();
+		KitPvPAPI.setInstance(null);
+
+		// TODO: Remover quando melhorar a classe principal
+		this.disable();
+	}
+
+	// TODO: Melhorar a classe principal
 
 	public static Plugin plugin;
 
@@ -133,8 +155,7 @@ public class Main extends JavaPlugin implements Listener {
 	public static EstadoHG EstadoHG = br.alkazuz.kitpvp.simulador.EstadoHG.INICIANDO;
 	public static boolean canRestart = true;
 
-	@Override
-	public void onEnable() {
+	public void enable() {
 		plugin = this;
 		new Config(this);
 		new KitManager();
@@ -158,18 +179,18 @@ public class Main extends JavaPlugin implements Listener {
 			e1.printStackTrace();
 		}
 		loadEvents();
-		Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(SpectrePvP.getPlugin(), new Runnable() {
 			public void run() {
 				Calendar rightNow = Calendar.getInstance();
 				int Hora = rightNow.get(Calendar.HOUR);
 				int minuto = rightNow.get(Calendar.MINUTE);
 				if (Hora == 0 || Hora == 00 || Hora == 8 || Hora == 8 || Hora == 13 || Hora == 17) {
 					if (minuto == 0 || minuto <= 5) {
-						if (Main.canRestart) {
+						if (SpectrePvP.canRestart) {
 							TempoReiniciar.Iniciando = 301;
 							TempoReiniciar.CancelarTempo();
 							new TempoReiniciar();
-							Main.canRestart = false;
+							SpectrePvP.canRestart = false;
 						}
 					}
 				}
@@ -198,7 +219,7 @@ public class Main extends JavaPlugin implements Listener {
 			world.setTime(6000L);
 		}
 		for (Player todos : Bukkit.getOnlinePlayers()) {
-			todos.kickPlayer("§2§lSpectrePvP \n§7Servidor Reiniciando...\n §7Por favor entre novamente em §c1 minuto.");
+			todos.kickPlayer("ï¿½2ï¿½lSpectrePvP \nï¿½7Servidor Reiniciando...\n ï¿½7Por favor entre novamente em ï¿½c1 minuto.");
 		}
 		for (World world : Bukkit.getWorlds()) {
 			for (Chunk chunk : world.getLoadedChunks()) {
@@ -212,12 +233,12 @@ public class Main extends JavaPlugin implements Listener {
 			}
 		}
 		loadCmds();
-		Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(SpectrePvP.getPlugin(), new Runnable() {
 
 			public void run() {
 				for (Player player : Bukkit.getOnlinePlayers()) {
 					if (GroupAPI.getGroup(player).equalsIgnoreCase("Dono")) {
-						player.sendMessage("§4§lMYSQL §fSalvando dados dos jogadores...");
+						player.sendMessage("ï¿½4ï¿½lMYSQL ï¿½fSalvando dados dos jogadores...");
 					}
 				}
 				new Thread() {
@@ -233,7 +254,7 @@ public class Main extends JavaPlugin implements Listener {
 							if (i == index) {
 								for (Player player : Bukkit.getOnlinePlayers()) {
 									if (GroupAPI.getGroup(player).equalsIgnoreCase("Dono")) {
-										player.sendMessage("§4§lMYSQL §fDados salvos com Sucesso");
+										player.sendMessage("ï¿½4ï¿½lMYSQL ï¿½fDados salvos com Sucesso");
 									}
 								}
 							}
@@ -272,7 +293,7 @@ public class Main extends JavaPlugin implements Listener {
 	public static List<String> topkill = new ArrayList<String>();
 
 	public void atualizarplaca() {
-		Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(SpectrePvP.getPlugin(), new Runnable() {
 			public void run() {
 				MySQLFunctions.getPlayersall();
 				API.AutomaticMessage();
@@ -302,9 +323,9 @@ public class Main extends JavaPlugin implements Listener {
 												break;
 										}
 									}
-									sign.setLine(0, "§6§lTOP 1");
-									sign.setLine(1, "§bJogador:");
-									sign.setLine(2, "§f" + cTopKill.Top1);
+									sign.setLine(0, "ï¿½6ï¿½lTOP 1");
+									sign.setLine(1, "ï¿½bJogador:");
+									sign.setLine(2, "ï¿½f" + cTopKill.Top1);
 									sign.setLine(3, "");
 								}
 								if (ChatColor.stripColor(sign.getLine(0)).equalsIgnoreCase("TOP 2")) {
@@ -328,9 +349,9 @@ public class Main extends JavaPlugin implements Listener {
 												break;
 										}
 									}
-									sign.setLine(0, "§e§lTOP 2");
-									sign.setLine(1, "§bJogador:");
-									sign.setLine(2, "§f" + cTopKill.Top2);
+									sign.setLine(0, "ï¿½eï¿½lTOP 2");
+									sign.setLine(1, "ï¿½bJogador:");
+									sign.setLine(2, "ï¿½f" + cTopKill.Top2);
 									sign.setLine(3, "");
 								}
 								if (ChatColor.stripColor(sign.getLine(0)).equalsIgnoreCase("TOP 3")) {
@@ -354,9 +375,9 @@ public class Main extends JavaPlugin implements Listener {
 												break;
 										}
 									}
-									sign.setLine(0, "§c§lTOP 3");
-									sign.setLine(1, "§bJogador:");
-									sign.setLine(2, "§f" + cTopKill.Top3);
+									sign.setLine(0, "ï¿½cï¿½lTOP 3");
+									sign.setLine(1, "ï¿½bJogador:");
+									sign.setLine(2, "ï¿½f" + cTopKill.Top3);
 									sign.setLine(3, "");
 								}
 								sign.update();
@@ -374,7 +395,7 @@ public class Main extends JavaPlugin implements Listener {
 		if (!(minuto == 00) || !(minuto == 0))
 			return;
 		Bukkit.broadcastMessage(
-				MessageAPI.Command_Succes + "Executando limpeza do Servidor, o servidor pode travar, mas voltará");
+				MessageAPI.Command_Succes + "Executando limpeza do Servidor, o servidor pode travar, mas voltarï¿½");
 		final Runtime r2 = Runtime.getRuntime();
 		final long Lused2 = (r2.totalMemory() - r2.freeMemory()) / 1024L / 1024L;
 		System.gc();
@@ -384,17 +405,16 @@ public class Main extends JavaPlugin implements Listener {
 					|| (GroupAPI.getGroup(s).equalsIgnoreCase("Administrador")
 							|| (GroupAPI.getGroup(s).equalsIgnoreCase("Moderador")
 									|| (GroupAPI.getGroup(s).equalsIgnoreCase("Trial")))))) {
-				s.sendMessage(MessageAPI.Command_Succes + "Foram removidos §6" + Long.toString(Lused2 - Lused3)
-						+ "M §aRAM do Servidor");
+				s.sendMessage(MessageAPI.Command_Succes + "Foram removidos ï¿½6" + Long.toString(Lused2 - Lused3)
+						+ "M ï¿½aRAM do Servidor");
 			}
 		}
-		Bukkit.broadcastMessage(MessageAPI.Command_Succes + "Limpeza concluída!");
+		Bukkit.broadcastMessage(MessageAPI.Command_Succes + "Limpeza concluï¿½da!");
 	}
 
-	@Override
-	public void onDisable() {
+	public void disable() {
 		for (Player todos : Bukkit.getOnlinePlayers()) {
-			todos.kickPlayer("§2§lSpectrePvP \n§7Servidor Reiniciando...\n §7Por favor entre novamente em §c1 minuto.");
+			todos.kickPlayer("ï¿½2ï¿½lSpectrePvP \nï¿½7Servidor Reiniciando...\n ï¿½7Por favor entre novamente em ï¿½c1 minuto.");
 		}
 	}
 

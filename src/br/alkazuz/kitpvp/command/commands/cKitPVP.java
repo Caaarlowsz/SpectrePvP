@@ -13,7 +13,7 @@ import br.alkazuz.kitpvp.config.KitDiario;
 import br.alkazuz.kitpvp.config.KitsConfig;
 import br.alkazuz.kitpvp.config.MLGConfig;
 import br.alkazuz.kitpvp.config.WarpConfig;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class cKitPVP implements CommandExecutor {
 
@@ -24,17 +24,17 @@ public class cKitPVP implements CommandExecutor {
 
 			if (Sender instanceof Player
 					&& !GroupAPI.GroupCanExecute(GroupAPI.getGroup((Player) Sender), Cmd.getName())) {
-				Sender.sendMessage(MessageAPI.Command_Error + "Comando inexistente ou você não tem acesso");
+				Sender.sendMessage(MessageAPI.Command_Error + "Comando inexistente ou vocï¿½ nï¿½o tem acesso");
 				return true;
 			}
 
-			new br.alkazuz.kitpvp.config.Config(Main.getPlugin());
-			new GroupConfig(Main.getPlugin());
+			new br.alkazuz.kitpvp.config.Config(SpectrePvP.getPlugin());
+			new GroupConfig(SpectrePvP.getPlugin());
 			new WarpConfig(br.alkazuz.groupapi.main.Main.getPlugin());
-			new KitDiario(Main.getPlugin());
-			new ConquistaConfig(Main.getPlugin());
-			new MLGConfig(Main.getPlugin());
-			new KitsConfig(Main.getPlugin());
+			new KitDiario(SpectrePvP.getPlugin());
+			new ConquistaConfig(SpectrePvP.getPlugin());
+			new MLGConfig(SpectrePvP.getPlugin());
+			new KitsConfig(SpectrePvP.getPlugin());
 			Sender.sendMessage(MessageAPI.Command_Succes + "Config recarregada.");
 
 		}

@@ -12,7 +12,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.simulador.EstadoHG;
 import br.alkazuz.kitpvp.simulador.EventosAPI;
 import br.alkazuz.kitpvp.simulador.KitAPI;
@@ -30,10 +30,10 @@ public class sStomper implements Listener, CommandExecutor {
 				p.playSound(p.getLocation(), Sound.LEVEL_UP, 4.0f, 4.0f);
 				KitAPI.kits.add(p.getName());
 				KitAPI.stomper.add(p.getName());
-				p.sendMessage("§aVocê pegou o Kit §fStomper");
+				p.sendMessage("ï¿½aVocï¿½ pegou o Kit ï¿½fStomper");
 				p.getInventory().clear();
 			} else {
-				p.sendMessage("§cVoce já selecionou um kit!");
+				p.sendMessage("ï¿½cVoce jï¿½ selecionou um kit!");
 			}
 			return true;
 		}
@@ -55,7 +55,7 @@ public class sStomper implements Listener, CommandExecutor {
 		for (final Entity ent : p.getNearbyEntities(4.0, 1.5, 4.0)) {
 			if (ent instanceof Player) {
 				final Player plr = (Player) ent;
-				if (Main.EstadoHG == EstadoHG.INICIANDO || Main.EstadoHG == EstadoHG.INVENCIVEL)
+				if (SpectrePvP.EstadoHG == EstadoHG.INICIANDO || SpectrePvP.EstadoHG == EstadoHG.INVENCIVEL)
 					return;
 				if (e.getDamage() <= 4.0) {
 					e.setCancelled(true);

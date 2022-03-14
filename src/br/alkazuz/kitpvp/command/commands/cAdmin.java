@@ -24,7 +24,7 @@ import br.alkazuz.groupapi.api.GroupAPI;
 import br.alkazuz.kitpvp.api.API;
 import br.alkazuz.kitpvp.api.MessageAPI;
 import br.alkazuz.kitpvp.api.WarpAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.protection.Protection;
 
 public class cAdmin implements CommandExecutor, Listener {
@@ -64,7 +64,7 @@ public class cAdmin implements CommandExecutor, Listener {
 			p.getInventory().setItem(3,
 					API.createItem(p, Material.BEDROCK, "§aJaula", new String[] { "" }, 1, (short) 0));
 
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 
 					API.admin.add(p);
@@ -111,7 +111,7 @@ public class cAdmin implements CommandExecutor, Listener {
 				t.getWorld().spawnEntity(t.getLocation(), EntityType.BAT);
 				t.getWorld().spawnEntity(t.getLocation(), EntityType.BAT);
 				t.getWorld().spawnEntity(t.getLocation(), EntityType.BAT);
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 					public void run() {
 						final String world = t.getWorld().getName();
 						for (final org.bukkit.entity.Entity entity : Bukkit.getServer().getWorld(world).getEntities()) {
@@ -145,7 +145,7 @@ public class cAdmin implements CommandExecutor, Listener {
 
 				p.sendMessage(" ");
 				p.sendMessage(MessageAPI.Command_Succes + "Pegando informações sobre auto-soup...");
-				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 					public void run() {
 
 						if (API.getAmount(t, Material.BOWL) == 1) {

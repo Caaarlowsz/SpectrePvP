@@ -17,7 +17,7 @@ import br.alkazuz.kitpvp.clan.Clan;
 import br.alkazuz.kitpvp.config.ClanConfig;
 import br.alkazuz.kitpvp.kit.KitAPI;
 import br.alkazuz.kitpvp.ks.KillStreakAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.menu.MenusAPI;
 import br.alkazuz.kitpvp.mlg.MLGAPI;
 import br.alkazuz.kitpvp.mysql.manager.Status;
@@ -25,7 +25,7 @@ import br.alkazuz.kitpvp.simulador.EventosAPI;
 
 public class ScoreBoarding implements Listener {
 
-	public static Main plugin;
+	public static SpectrePvP plugin;
 
 	public static ArrayList<Player> Score = new ArrayList<Player>();
 

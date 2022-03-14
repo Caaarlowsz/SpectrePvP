@@ -18,7 +18,7 @@ import br.alkazuz.kitpvp.api.MessageAPI;
 import br.alkazuz.kitpvp.cooldown.CooldownAPI;
 import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class FireLauncher extends Kit implements Listener {
 
@@ -50,7 +50,7 @@ public class FireLauncher extends Kit implements Listener {
 				CooldownAPI.addCooldown(p, 35);
 				inFire.add(p);
 
-				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 					public void run() {
 
 						if (inFire.contains(p)) {

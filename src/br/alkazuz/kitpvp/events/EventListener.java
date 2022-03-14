@@ -45,7 +45,7 @@ import br.alkazuz.kitpvp.config.Config;
 import br.alkazuz.kitpvp.kit.KitAPI;
 import br.alkazuz.kitpvp.kit.kits.Gladiator;
 import br.alkazuz.kitpvp.ks.KillStreakAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.mysql.manager.MySQLFunctions;
 import br.alkazuz.kitpvp.mysql.manager.Status;
 import br.alkazuz.kitpvp.protection.Protection;
@@ -93,7 +93,7 @@ public class EventListener implements Listener {
 			}
 
 			BossBarAPI.setMessage(hitter, p.getDisplayName() + " §f§l- " + KitAPI.getKitName(p));
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), (Runnable) new Runnable() {
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), (Runnable) new Runnable() {
 				@Override
 				public void run() {
 					BossBarAPI.removeBar(hitter);
@@ -136,7 +136,7 @@ public class EventListener implements Listener {
 						e.getPlayer().setCompassTarget(entidades.getLocation());
 						e.getPlayer().sendMessage(MessageAPI.Command_Succes + "Bússula apontando para §c"
 								+ ((Player) entidades).getName());
-						Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(),
+						Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(),
 								(Runnable) new Runnable() {
 									@Override
 									public void run() {
@@ -153,7 +153,7 @@ public class EventListener implements Listener {
 				delay.add(e.getPlayer());
 				e.getPlayer().sendMessage(MessageAPI.Command_Error + "Nenhum jogador encontrado.");
 				e.getPlayer().setCompassTarget(new Location(e.getPlayer().getWorld(), 0, 100, 0));
-				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), (Runnable) new Runnable() {
+				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), (Runnable) new Runnable() {
 					@Override
 					public void run() {
 						if (delay.contains(e.getPlayer())) {
@@ -208,7 +208,7 @@ public class EventListener implements Listener {
 
 		boolean sendtitle = true;
 		MySQLFunctions.loadPlayer(e.getPlayer());
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 			public void run() {
 				NameTagAPI.setupTag(p);
 			}
@@ -216,7 +216,7 @@ public class EventListener implements Listener {
 
 		KillStreakAPI.ks.put(p, 0);
 
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 			public void run() {
 				API.sendItems(p);
 			}
@@ -242,7 +242,7 @@ public class EventListener implements Listener {
 			TituloAPI.mandarTitulo(p, "§2§lSpectrePvP");
 			TituloAPI.mandarSubTitulo(p, "§7§oBem Vindo ao Servidor");
 		}
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 			public void run() {
 				ScoreBoarding.Score.add(e.getPlayer());
 				ScoreBoarding.setScoreBoard(e.getPlayer());
@@ -310,7 +310,7 @@ public class EventListener implements Listener {
 		if (e.getEntity().getKiller() instanceof Player) {
 			Player d = e.getEntity().getKiller();
 			if (d == p) {
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 					public void run() {
 						p.spigot().respawn();
 						WarpAPI.setWarp(p, "Spawn");
@@ -332,9 +332,9 @@ public class EventListener implements Listener {
 			KillStreakAPI.addKS(d);
 			KillStreakAPI.resetKS(p);
 			if (WarpAPI.getWarp(p).equalsIgnoreCase("Lava")) {
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 					public void run() {
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+						Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 							public void run() {
 								p.spigot().respawn();
 								WarpAPI.setWarp(p, "Lava");
@@ -362,7 +362,7 @@ public class EventListener implements Listener {
 			}
 			Protection.setImortal(p, true);
 
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 					p.spigot().respawn();
 					if (CombatLog.Sair.contains(p.getName())) {
@@ -418,14 +418,14 @@ public class EventListener implements Listener {
 						"§4§lKS §c" + d.getName() + " §fconseguiu um §cKillStreak §fde §e" + KillStreakAPI.getKS(d));
 			}
 
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 					API.sendItems(p);
 				}
 			}, 10L);
 		} else {
 			if (WarpAPI.getWarp(p).equalsIgnoreCase("fps")) {
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 					public void run() {
 						p.spigot().respawn();
 						WarpAPI.setWarp(p, "Spawn");
@@ -434,7 +434,7 @@ public class EventListener implements Listener {
 
 				return;
 			}
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 					p.spigot().respawn();
 					WarpAPI.setWarp(p, "Spawn");
@@ -443,7 +443,7 @@ public class EventListener implements Listener {
 					}
 				}
 			}, 6L);
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 				public void run() {
 					API.sendItems(p);
 				}
@@ -614,7 +614,7 @@ public class EventListener implements Listener {
 			delayChat.add(e.getPlayer());
 		}
 
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), (Runnable) new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), (Runnable) new Runnable() {
 			@Override
 			public void run() {
 				if (delayChat.contains(p)) {
@@ -657,7 +657,7 @@ public class EventListener implements Listener {
 			e.getEntity().remove();
 			return;
 		}
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 			public void run() {
 				e.getEntity().remove();
 			}

@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import br.alkazuz.kitpvp.api.MessageAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.score.ScoreBoarding;
 
 public class cScore implements CommandExecutor {
@@ -24,7 +24,7 @@ public class cScore implements CommandExecutor {
 		Player p = (Player) Sender;
 		if (Cmd.getName().equalsIgnoreCase("scoreboard")) {
 			if (delay.contains(p)) {
-				p.sendMessage(MessageAPI.Command_Error + "Você está em cooldown desse comando");
+				p.sendMessage(MessageAPI.Command_Error + "Vocï¿½ estï¿½ em cooldown desse comando");
 				return true;
 			}
 			if (ScoreBoarding.Score.contains(p)) {
@@ -34,10 +34,10 @@ public class cScore implements CommandExecutor {
 			}
 
 			p.sendMessage(MessageAPI.Command_Succes + "Sua Scoreboard foi "
-					+ (ScoreBoarding.Score.contains(p) ? "§aativada" : "§4desativada"));
+					+ (ScoreBoarding.Score.contains(p) ? "ï¿½aativada" : "ï¿½4desativada"));
 			delay.add(p);
 			ScoreBoarding.setScoreBoard(p);
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), (Runnable) new Runnable() {
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), (Runnable) new Runnable() {
 				@Override
 				public void run() {
 					delay.remove(p);

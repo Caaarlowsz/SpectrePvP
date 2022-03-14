@@ -10,7 +10,7 @@ import org.spigotmc.ProtocolInjector;
 
 import br.alkazuz.kitpvp.api.RankAPI;
 import br.alkazuz.kitpvp.kit.KitAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import net.minecraft.server.v1_7_R4.ChatSerializer;
 import net.minecraft.server.v1_7_R4.IChatBaseComponent;
 import net.minecraft.server.v1_7_R4.PlayerConnection;
@@ -20,7 +20,7 @@ public class TabAPI implements Listener {
 
 	@EventHandler
 	void TabDoServidor(PlayerJoinEvent evento) {
-		Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(SpectrePvP.getPlugin(), new Runnable() {
 			public void run() {
 				Player jogador = evento.getPlayer();
 				PlayerConnection connect = ((CraftPlayer) jogador).getHandle().playerConnection;

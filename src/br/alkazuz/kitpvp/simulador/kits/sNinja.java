@@ -16,7 +16,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 import br.alkazuz.kitpvp.simulador.EventosAPI;
 import br.alkazuz.kitpvp.simulador.KitAPI;
 
@@ -33,13 +33,13 @@ public class sNinja implements Listener, CommandExecutor {
 				if (!EventosAPI.playerPlayingHG(p)) {
 					return true;
 				}
-				p.sendMessage("§aVocê pegou o Kit §fNinja");
+				p.sendMessage("ï¿½aVocï¿½ pegou o Kit ï¿½fNinja");
 				p.playSound(p.getLocation(), Sound.LEVEL_UP, 4.0f, 4.0f);
 				KitAPI.kits.add(p.getName());
 				KitAPI.ninja.add(sender.getName());
 				p.getInventory().clear();
 			} else {
-				p.sendMessage("§cVoce ja contem um kit!");
+				p.sendMessage("ï¿½cVoce ja contem um kit!");
 			}
 			return true;
 		}
@@ -54,7 +54,7 @@ public class sNinja implements Listener, CommandExecutor {
 			final Player localPlayer2 = (Player) paramEntityDamageByEntityEvent.getEntity();
 			if (KitAPI.ninja.contains(localPlayer1.getName())) {
 				a.put(localPlayer1, localPlayer2);
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpectrePvP.getPlugin(), new Runnable() {
 					@Override
 					public void run() {
 						cooldownbk.remove(localPlayer1);

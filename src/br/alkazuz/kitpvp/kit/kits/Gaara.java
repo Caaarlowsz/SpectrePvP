@@ -22,15 +22,15 @@ import br.alkazuz.kitpvp.api.MessageAPI;
 import br.alkazuz.kitpvp.cooldown.CooldownAPI;
 import br.alkazuz.kitpvp.kit.Kit;
 import br.alkazuz.kitpvp.kit.KitAPI;
-import br.alkazuz.kitpvp.main.Main;
+import com.github.caaarlowsz.spectremc.kitpvp.SpectrePvP;
 
 public class Gaara extends Kit implements Listener {
 
 	public Gaara() {
-		// super("Gaara", new String[]{"","§7Crie um capsula de areia no jogador"}, new
+		// super("Gaara", new String[]{"","ï¿½7Crie um capsula de areia no jogador"}, new
 		// ItemStack(Material.SANDSTONE), "kit.Gaara",KitType.AVANCED);
 		super("Gaara", 4000, false, new ItemStack(Material.SANDSTONE), true, "kit.gaara", false,
-				new String[] { "", " §e§l- §7Crie um capsula de areia no jogador" });
+				new String[] { "", " ï¿½eï¿½l- ï¿½7Crie um capsula de areia no jogador" });
 	}
 
 	private List<UUID> blocos = new ArrayList<UUID>();
@@ -50,11 +50,11 @@ public class Gaara extends Kit implements Listener {
 			if (CooldownAPI.Cooldown.containsKey(p.getName())) {
 				e.setCancelled(true);
 				p.sendMessage(
-						MessageAPI.Command_Error + "Você está com um Cooldown de §e" + CooldownAPI.Cooldown(p) + "s");
+						MessageAPI.Command_Error + "Vocï¿½ estï¿½ com um Cooldown de ï¿½e" + CooldownAPI.Cooldown(p) + "s");
 				return;
 			}
 			if ((Gladiator.fighting.containsKey(p.getName())) || (Gladiator.noExecut.contains(p))) {
-				p.sendMessage("§cEste kit nao é permitido no Gladiador");
+				p.sendMessage("ï¿½cEste kit nao ï¿½ permitido no Gladiador");
 			} else {
 				CooldownAPI.addCooldown(p, 15);
 				API.darEfeito(p, PotionEffectType.SPEED, 10, 1);
@@ -165,7 +165,7 @@ public class Gaara extends Kit implements Listener {
 							cancel();
 						}
 					}
-				}.runTaskTimer(Main.plugin, 0L, 8L);
+				}.runTaskTimer(SpectrePvP.plugin, 0L, 8L);
 			}
 		}
 	}
